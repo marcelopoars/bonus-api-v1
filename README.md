@@ -6,45 +6,56 @@ Projeto desenvolvido na disciplina de `Desenvolvimento de Serviços e APIs` do c
 
 Este programa permite o usuário cadastrar clientes e registrar vendas. Cada venda registrada, gera pontos para o cliente. Estes pontos são convertidos em dinheiro, e posteriormente o cliente poderá resgatar em produtos.
 
+## Install
+
+`npm install`
+
+## Run project
+
+`npm run dev`
+
 ## API
 
 ### Customers
 
 #### Create customer / POST
 
-http://localhost:3000/customers
+`/customers`
 
 #### Get customers / GET
 
-http://localhost:3000/customers
+`/customers`
 
 #### Get by ID / GET
 
-http://localhost:3000/customers/id
+`/customers/id`
 
 #### Edit customer by ID / POST
-http://localhost:3000/customers/id
+
+`/customers/id`
 
 ### Delete customer by ID
-http://localhost:3000/customers/id
 
+`/customers/id`
 
 ### Orders
 
 #### Create order / POST
 
-http://localhost:3000/orders
+`/orders`
 
 #### Get orders / GET
 
-http://localhost:3000/orders
+`/orders`
 
 #### Get by ID / GET
 
-http://localhost:3000/orders/id
+`/orders/id`
 
 #### Edit order by ID / POST
-http://localhost:3000/orders/id
 
-### Delete order by ID
-http://localhost:3000/orders/id
+`/orders/id`
+
+#### Delete order by ID
+
+`/orders/id`
