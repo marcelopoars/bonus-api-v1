@@ -1,0 +1,89 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "Bonus API - v1",
+    "dateExported": "2023-05-24T23:15:06.348Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "ad6799b3-9624-47c1-bdce-a25a374e6785",
+            "colId": "85f257d9-4747-4dfa-a658-de2d9fb9d7d5",
+            "containerId": "",
+            "name": "Get All Customers Copy",
+            "url": "http://localhost:3000/customers",
+            "method": "POST",
+            "sortNum": 5000,
+            "created": "2023-05-24T22:56:22.760Z",
+            "modified": "2023-05-24T23:00:43.309Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\": \"Marcelo Pereira\",\n  \"cpf\": \"999.999.999-99\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "0350df59-2b3e-4633-b5bb-f1bbbad73b5c",
+            "colId": "85f257d9-4747-4dfa-a658-de2d9fb9d7d5",
+            "containerId": "",
+            "name": "Get All Customers",
+            "url": "http://localhost:3000/customers",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2023-05-24T22:54:21.151Z",
+            "modified": "2023-05-24T22:55:09.722Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "98e05f83-4b1c-4e7d-a8d0-f4a4a29db32b",
+            "colId": "85f257d9-4747-4dfa-a658-de2d9fb9d7d5",
+            "containerId": "",
+            "name": "Get Customers By ID",
+            "url": "http://localhost:3000/customers/1",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2023-05-24T22:55:26.652Z",
+            "modified": "2023-05-24T22:56:05.297Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "ac61088f-a1a3-4f08-9941-3000bd811f69",
+            "colId": "85f257d9-4747-4dfa-a658-de2d9fb9d7d5",
+            "containerId": "",
+            "name": "Edit Customer By ID",
+            "url": "http://localhost:3000/customers/1234",
+            "method": "PUT",
+            "sortNum": 30000,
+            "created": "2023-05-24T23:02:28.916Z",
+            "modified": "2023-05-24T23:05:42.853Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\": \"Sohaib\",\n  \"cpf\": \"999.999.999-99\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "32446c96-bac2-4575-9b15-6b2b8ecb968b",
+            "colId": "85f257d9-4747-4dfa-a658-de2d9fb9d7d5",
+            "containerId": "",
+            "name": "Delete Customer By ID",
+            "url": "http://localhost:3000/customers/123",
+            "method": "DELETE",
+            "sortNum": 40000,
+            "created": "2023-05-24T23:05:47.193Z",
+            "modified": "2023-05-24T23:06:33.853Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        }
+    ]
+}
