@@ -4,7 +4,7 @@
   "description": "Projeto desenvolvido na disciplina de Desenvolvimento de Serviços e APIs do curso de Análise e Desenvolvimento de Sistemas - Faculdade UniSenac - SENAC-RS.",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "node app.js"
   },
   "keywords": [],
   "author": "Marcelo Pereira",
@@ -19,5 +19,6 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.18.2"
-  }
+  },
+  "type": "module"
 }
