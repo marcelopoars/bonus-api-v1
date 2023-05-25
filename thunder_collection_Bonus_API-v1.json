@@ -1,20 +1,35 @@
 {
     "client": "Thunder Client",
     "collectionName": "Bonus API - v1",
-    "dateExported": "2023-05-24T23:15:06.348Z",
+    "dateExported": "2023-05-25T23:15:28.162Z",
     "version": "1.1",
-    "folders": [],
+    "folders": [
+        {
+            "_id": "0823cd92-3585-4489-a925-664b57e46a25",
+            "name": "Customers",
+            "containerId": "",
+            "created": "2023-05-25T23:07:15.685Z",
+            "sortNum": 10000
+        },
+        {
+            "_id": "9b49a661-92fc-44af-b0bd-3be22d844ed6",
+            "name": "Orders",
+            "containerId": "",
+            "created": "2023-05-25T23:07:25.284Z",
+            "sortNum": 20000
+        }
+    ],
     "requests": [
         {
             "_id": "ad6799b3-9624-47c1-bdce-a25a374e6785",
             "colId": "85f257d9-4747-4dfa-a658-de2d9fb9d7d5",
-            "containerId": "",
-            "name": "Get All Customers Copy",
+            "containerId": "0823cd92-3585-4489-a925-664b57e46a25",
+            "name": "Create Customer",
             "url": "http://localhost:3000/customers",
             "method": "POST",
-            "sortNum": 5000,
+            "sortNum": 10000,
             "created": "2023-05-24T22:56:22.760Z",
-            "modified": "2023-05-24T23:00:43.309Z",
+            "modified": "2023-05-25T23:07:47.146Z",
             "headers": [],
             "params": [],
             "body": {
@@ -25,15 +40,62 @@
             "tests": []
         },
         {
+            "_id": "f733c559-3ea4-4d18-8cbb-a5537679c789",
+            "colId": "85f257d9-4747-4dfa-a658-de2d9fb9d7d5",
+            "containerId": "9b49a661-92fc-44af-b0bd-3be22d844ed6",
+            "name": "Create Order",
+            "url": "http://localhost:3000/orders",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2023-05-25T23:09:02.398Z",
+            "modified": "2023-05-25T23:11:33.650Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"customerId\": 1,\n  \"amount\": 595.49\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
             "_id": "0350df59-2b3e-4633-b5bb-f1bbbad73b5c",
             "colId": "85f257d9-4747-4dfa-a658-de2d9fb9d7d5",
-            "containerId": "",
+            "containerId": "0823cd92-3585-4489-a925-664b57e46a25",
             "name": "Get All Customers",
             "url": "http://localhost:3000/customers",
             "method": "GET",
-            "sortNum": 10000,
+            "sortNum": 20000,
             "created": "2023-05-24T22:54:21.151Z",
-            "modified": "2023-05-24T22:55:09.722Z",
+            "modified": "2023-05-25T23:07:51.907Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "c19be47a-2937-4b9a-9865-6dd36b08e4be",
+            "colId": "85f257d9-4747-4dfa-a658-de2d9fb9d7d5",
+            "containerId": "9b49a661-92fc-44af-b0bd-3be22d844ed6",
+            "name": "Get All Orders",
+            "url": "http://localhost:3000/orders",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2023-05-25T23:11:55.372Z",
+            "modified": "2023-05-25T23:12:19.995Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "be2e2680-cf6f-4d53-9554-9d4690d35074",
+            "colId": "85f257d9-4747-4dfa-a658-de2d9fb9d7d5",
+            "containerId": "9b49a661-92fc-44af-b0bd-3be22d844ed6",
+            "name": "Get Order By ID",
+            "url": "http://localhost:3000/orders/123",
+            "method": "GET",
+            "sortNum": 30000,
+            "created": "2023-05-25T23:12:32.122Z",
+            "modified": "2023-05-25T23:14:02.206Z",
             "headers": [],
             "params": [],
             "tests": []
@@ -41,13 +103,13 @@
         {
             "_id": "98e05f83-4b1c-4e7d-a8d0-f4a4a29db32b",
             "colId": "85f257d9-4747-4dfa-a658-de2d9fb9d7d5",
-            "containerId": "",
-            "name": "Get Customers By ID",
+            "containerId": "0823cd92-3585-4489-a925-664b57e46a25",
+            "name": "Get Customer By ID",
             "url": "http://localhost:3000/customers/1",
             "method": "GET",
-            "sortNum": 20000,
+            "sortNum": 40000,
             "created": "2023-05-24T22:55:26.652Z",
-            "modified": "2023-05-24T22:56:05.297Z",
+            "modified": "2023-05-25T23:08:01.396Z",
             "headers": [],
             "params": [],
             "tests": []
@@ -55,13 +117,13 @@
         {
             "_id": "ac61088f-a1a3-4f08-9941-3000bd811f69",
             "colId": "85f257d9-4747-4dfa-a658-de2d9fb9d7d5",
-            "containerId": "",
+            "containerId": "0823cd92-3585-4489-a925-664b57e46a25",
             "name": "Edit Customer By ID",
             "url": "http://localhost:3000/customers/1234",
             "method": "PUT",
-            "sortNum": 30000,
+            "sortNum": 45000,
             "created": "2023-05-24T23:02:28.916Z",
-            "modified": "2023-05-24T23:05:42.853Z",
+            "modified": "2023-05-25T23:08:08.118Z",
             "headers": [],
             "params": [],
             "body": {
@@ -74,13 +136,13 @@
         {
             "_id": "32446c96-bac2-4575-9b15-6b2b8ecb968b",
             "colId": "85f257d9-4747-4dfa-a658-de2d9fb9d7d5",
-            "containerId": "",
+            "containerId": "0823cd92-3585-4489-a925-664b57e46a25",
             "name": "Delete Customer By ID",
             "url": "http://localhost:3000/customers/123",
             "method": "DELETE",
-            "sortNum": 40000,
+            "sortNum": 50000,
             "created": "2023-05-24T23:05:47.193Z",
-            "modified": "2023-05-24T23:06:33.853Z",
+            "modified": "2023-05-25T23:08:03.387Z",
             "headers": [],
             "params": [],
             "tests": []
