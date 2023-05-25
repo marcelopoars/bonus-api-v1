@@ -22,7 +22,7 @@ app.get("/customers", (req, res) => {
   res.send("Lista de cliente");
 });
 
-// Get by ID / GET
+// Get customer by ID / GET
 app.get("/customers/:id", (req, res) => {
   const { id } = req.params;
 
@@ -42,6 +42,25 @@ app.delete("/customers/:id", (req, res) => {
   const { id } = req.params;
 
   res.send(`Deleted customer by ID: ${id}`);
+});
+
+// Create order / POST
+app.post("/orders", (req, res) => {
+  const { customerId, amount } = req.body;
+
+  res.send({ customerId, amount });
+});
+
+// Get orders / GET
+app.get("/orders", (req, res) => {
+  res.send("Lista de vendas");
+});
+
+// Get order by ID / GET
+app.get("/orders/:id", (req, res) => {
+  const { id } = req.params;
+
+  res.send(id);
 });
 
 app.listen(PORT, () => {
