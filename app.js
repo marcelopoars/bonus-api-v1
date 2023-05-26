@@ -7,14 +7,14 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json());
 
 app.get("/", (req, res) => {
-  res.send("Bonus API...");
+  res.send("<h1>Bonus API...</h1>");
 });
 
 // Create customer / POST
 app.post("/customers", (req, res) => {
-  const { name, cpf } = req.body;
+  const { name, cpf, city, phone } = req.body;
 
-  res.send({ name, cpf });
+  res.send({ id: 1, name, cpf, city, phone, points: 0 });
 });
 
 // Get customers / GET
@@ -32,23 +32,25 @@ app.get("/customers/:id", (req, res) => {
 // Edit customer by ID / POST
 app.put("/customers/:id", (req, res) => {
   const { id } = req.params;
-  const { name, cpf } = req.body;
+  const { name, cpf, city, phone, points } = req.body;
 
-  res.send({ id, name, cpf });
+  res.send({ id, name, cpf, city, phone, points });
 });
 
 // Delete customer by ID
 app.delete("/customers/:id", (req, res) => {
   const { id } = req.params;
 
-  res.send(`Deleted customer by ID: ${id}`);
+  res.send(`Deleted customer with ID ${id}`);
 });
 
 // Create order / POST
 app.post("/orders", (req, res) => {
   const { customerId, amount } = req.body;
 
-  res.send({ customerId, amount });
+  const points = Math.ceil(amount / 4)
+
+  res.send({ customerId, amount, points });
 });
 
 // Get orders / GET
