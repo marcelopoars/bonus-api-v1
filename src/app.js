@@ -1,4 +1,12 @@
+/* eslint-disable import/extensions */
 import express from 'express';
+import {
+  createCustomer,
+  deleteCustomer,
+  editCustomer,
+  getCustomerById,
+  list,
+} from './customers.js';
 
 const app = express();
 
@@ -26,29 +34,35 @@ app.get('/', (req, res) => {
 app.post('/customers', (req, res) => {
   const { name, cpf, city, phone } = req.body;
 
-  const customer = { id: 1, name, cpf, city, phone, points: 0 };
+  const customer = { name, cpf, city, phone, points: 0 };
 
-  res.status(201).json(customer);
+  const createdCustomer = createCustomer(customer);
+
+  res.status(201).json(createdCustomer);
 });
 
 // Get customers / GET
 app.get('/customers', (req, res) => {
-  res.json({ data: [] });
+  const customers = list();
+
+  res.json(customers);
 });
 
 // Get customer by ID / GET
 app.get('/customers/:id', (req, res) => {
   const { id } = req.params;
 
-  res.json({ id });
+  const customer = getCustomerById(id);
+
+  res.json(customer);
 });
 
 // Edit customer by ID / POST
 app.put('/customers/:id', (req, res) => {
   const { id } = req.params;
-  const { name, cpf, city, phone, points } = req.body;
+  const { name, cpf, city, phone } = req.body;
 
-  const editedCustomer = { id, name, cpf, city, phone, points };
+  const editedCustomer = editCustomer(id, { name, cpf, city, phone });
 
   res.send(editedCustomer);
 });
@@ -56,6 +70,8 @@ app.put('/customers/:id', (req, res) => {
 // Delete customer by ID
 app.delete('/customers/:id', (req, res) => {
   const { id } = req.params;
+
+  deleteCustomer(id);
 
   res.send({ message: 'Customer deleted', id });
 });
