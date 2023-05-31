@@ -7,6 +7,7 @@ import {
   getCustomerById,
   list,
 } from './customers.js';
+import { createOrder, getAllOrders, getOrderById } from './orders.js';
 
 const app = express();
 
@@ -80,23 +81,27 @@ app.delete('/customers/:id', (req, res) => {
 app.post('/orders', (req, res) => {
   const { customerId, amount } = req.body;
 
-  const points = Math.ceil(amount / 4);
+  const order = { customerId, amount };
 
-  const order = { customerId, amount, points };
+  const createdOrder = createOrder(order);
 
-  res.status(201).json(order);
+  res.status(201).json(createdOrder);
 });
 
 // Get orders / GET
 app.get('/orders', (req, res) => {
-  res.json({ data: [] });
+  const orders = getAllOrders();
+
+  res.json(orders);
 });
 
 // Get order by ID / GET
 app.get('/orders/:id', (req, res) => {
   const { id } = req.params;
 
-  res.json({ id });
+  const order = getOrderById(id);
+
+  res.json(order);
 });
 
 app.listen(PORT, () => {
