@@ -34,7 +34,7 @@ app.get('/', (req, res) => {
 app.post('/customers', (req, res) => {
   const { name, cpf, city, phone } = req.body;
 
-  const customer = { name, cpf, city, phone, points: 0 };
+  const customer = { name, cpf, city, phone };
 
   const createdCustomer = createCustomer(customer);
 
