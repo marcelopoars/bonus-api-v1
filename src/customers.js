@@ -23,9 +23,7 @@ export function list() {
 }
 
 export function getCustomerById(id) {
-  const customer = customers.find(customer => customer.id === Number(id));
-
-  return customer;
+  return customers.find(customer => customer.id === Number(id));
 }
 
 export function editCustomer(id, { name, cpf, city, phone }) {
