@@ -1,12 +1,13 @@
-/* eslint-disable import/extensions */
 import express from 'express';
+
 import {
   createCustomer,
-  deleteCustomer,
-  editCustomer,
-  getCustomerById,
   list,
+  getCustomerById,
+  editCustomer,
+  deleteCustomer,
 } from './customers.js';
+
 import { createOrder, getAllOrders, getOrderById } from './orders.js';
 
 const app = express();

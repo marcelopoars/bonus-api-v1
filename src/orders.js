@@ -1,13 +1,9 @@
-/* eslint-disable prefer-const */
-/* eslint-disable import/prefer-default-export */
-/* eslint-disable no-shadow */
-/* eslint-disable no-plusplus */
-let orders = [];
-let initialId = 1;
+const orders = [];
+let initialId = 0;
 
 export function createOrder({ customerId, amount }) {
   const order = {
-    id: initialId++,
+    id: (initialId += 1),
     customerId,
     amount,
   };
