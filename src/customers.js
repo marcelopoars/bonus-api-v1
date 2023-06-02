@@ -1,11 +1,12 @@
-/* eslint-disable no-shadow */
-/* eslint-disable no-plusplus */
 let customers = [];
-let initialId = 1;
+let initialId = 0;
 
 export function createCustomer({ name, cpf, city, phone }) {
+  if (!name || !cpf || !city || !phone)
+    return { message: 'All fields are required' };
+
   const customer = {
-    id: initialId++,
+    id: (initialId += 1),
     name,
     cpf,
     city,
@@ -23,13 +24,22 @@ export function list() {
 }
 
 export function getCustomerById(id) {
-  return customers.find(customer => customer.id === Number(id));
+  const customerById = customers.find(customer => customer.id === Number(id));
+
+  if (!customerById) return { message: 'Customer not found' };
+
+  return customerById;
 }
 
 export function editCustomer(id, { name, cpf, city, phone }) {
   const customerIndex = customers.findIndex(
     customer => customer.id === Number(id),
   );
+
+  if (customerIndex === -1) return { message: 'Customer not found' };
+
+  if (!name && !cpf && !city && !phone)
+    return { message: 'O campo está vazio.....' };
 
   if (name) customers[customerIndex].name = name;
   if (cpf) customers[customerIndex].cpf = cpf;
@@ -40,5 +50,13 @@ export function editCustomer(id, { name, cpf, city, phone }) {
 }
 
 export function deleteCustomer(id) {
+  const customerDeleted = customers.find(
+    customer => customer.id === Number(id),
+  );
+
+  if (!customerDeleted) return { message: 'Customer not found' };
+
   customers = customers.filter(customer => customer.id !== Number(id));
+
+  return { maessage: 'Customer has been deleted', id };
 }
