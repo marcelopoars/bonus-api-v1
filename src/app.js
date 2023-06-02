@@ -72,9 +72,9 @@ app.put('/customers/:id', (req, res) => {
 app.delete('/customers/:id', (req, res) => {
   const { id } = req.params;
 
-  deleteCustomer(id);
+  const result = deleteCustomer(id);
 
-  res.send({ message: 'Customer deleted', id });
+  res.send(result);
 });
 
 // Create order / POST
