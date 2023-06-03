@@ -1,4 +1,5 @@
 let customers = [];
+
 let initialId = 0;
 
 export function createCustomer({ name, cpf, city, phone }) {

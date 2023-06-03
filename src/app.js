@@ -105,7 +105,10 @@ app.get('/orders/:id', (req, res) => {
   res.json(order);
 });
 
+app.use((req, res, next) => {
+  res.status(404).send({ message: 'Route not found' });
+});
+
 app.listen(PORT, () => {
-  // eslint-disable-next-line no-console
   console.log(`Server running on port ${PORT}!🚀\n`);
 });
