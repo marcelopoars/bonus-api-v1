@@ -1,12 +1,13 @@
-/* eslint-disable import/extensions */
 import express from 'express';
+
 import {
   createCustomer,
-  deleteCustomer,
-  editCustomer,
-  getCustomerById,
   list,
+  getCustomerById,
+  editCustomer,
+  deleteCustomer,
 } from './customers.js';
+
 import { createOrder, getAllOrders, getOrderById } from './orders.js';
 
 const app = express();
@@ -72,9 +73,9 @@ app.put('/customers/:id', (req, res) => {
 app.delete('/customers/:id', (req, res) => {
   const { id } = req.params;
 
-  deleteCustomer(id);
+  const result = deleteCustomer(id);
 
-  res.send({ message: 'Customer deleted', id });
+  res.send(result);
 });
 
 // Create order / POST
@@ -104,7 +105,10 @@ app.get('/orders/:id', (req, res) => {
   res.json(order);
 });
 
+app.use((req, res, next) => {
+  res.status(404).send({ message: 'Route not found' });
+});
+
 app.listen(PORT, () => {
-  // eslint-disable-next-line no-console
   console.log(`Server running on port ${PORT}!🚀\n`);
 });
