@@ -22,7 +22,7 @@ export function createCustomer({ name, cpf, city, phone }) {
   return customer;
 }
 
-export function list() {
+export function getAllCustomers() {
   return customers;
 }
 

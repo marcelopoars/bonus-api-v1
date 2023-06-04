@@ -2,7 +2,7 @@ import express from 'express';
 
 import {
   createCustomer,
-  list,
+  getAllCustomers,
   getCustomerById,
   editCustomer,
   deleteCustomer,
@@ -45,7 +45,7 @@ app.post('/customers', (req, res) => {
 
 // Get customers / GET
 app.get('/customers', (req, res) => {
-  const customers = list();
+  const customers = getAllCustomers();
 
   res.json(customers);
 });

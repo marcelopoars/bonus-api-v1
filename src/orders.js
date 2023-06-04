@@ -1,11 +1,11 @@
-import { list } from './customers.js';
+import { getAllCustomers } from './customers.js';
 
 const orders = [];
 
 let initialId = 0;
 
 export function createOrder({ customerId, amount }) {
-  const customers = list();
+  const customers = getAllCustomers();
 
   const customerIndex = customers.findIndex(
     customer => customer.id === Number(customerId),
