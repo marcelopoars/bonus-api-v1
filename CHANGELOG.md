@@ -35,11 +35,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Add Orders routes
 
+### Changed
+
+- Configured Prettier and ESLint
+
 ## [1.1.0] - 2023-05-24
 
 ### Changed
 
 - Initial setup
 - Install dependencies
+- created node project
 - Created Customers routes
 - Created README file
