@@ -2,7 +2,7 @@ import express from 'express';
 
 import {
   createCustomer,
-  list,
+  getAllCustomers,
   getCustomerById,
   editCustomer,
   deleteCustomer,
@@ -32,77 +32,117 @@ app.get('/', (req, res) => {
   });
 });
 
+//#########################
+// CUSTOMERS
+//#########################
+
 // Create customer / POST
 app.post('/customers', (req, res) => {
   const { name, cpf, city, phone } = req.body;
 
-  const customer = { name, cpf, city, phone };
+  try {
+    const customer = { name, cpf, city, phone };
 
-  const createdCustomer = createCustomer(customer);
+    const createdCustomer = createCustomer(customer);
 
-  res.status(201).json(createdCustomer);
+    res.status(201).json(createdCustomer);
+  } catch (error) {
+    res.status(error.status).json(error);
+  }
 });
 
-// Get customers / GET
+// Get All Customers / GET
 app.get('/customers', (req, res) => {
-  const customers = list();
+  try {
+    const customers = getAllCustomers();
 
-  res.json(customers);
+    res.json(customers);
+  } catch (error) {
+    res.status(error.status).json(error);
+  }
 });
 
-// Get customer by ID / GET
+// Get Customer By ID / GET
 app.get('/customers/:id', (req, res) => {
   const { id } = req.params;
 
-  const customer = getCustomerById(id);
+  try {
+    const customer = getCustomerById(id);
 
-  res.json(customer);
+    res.json(customer);
+  } catch (error) {
+    res.status(error.status).json(error);
+  }
 });
 
-// Edit customer by ID / POST
+// Edit Customer By ID / POST
 app.put('/customers/:id', (req, res) => {
   const { id } = req.params;
-  const { name, cpf, city, phone } = req.body;
 
-  const editedCustomer = editCustomer(id, { name, cpf, city, phone });
+  try {
+    const { name, cpf, city, phone } = req.body;
 
-  res.send(editedCustomer);
+    const editedCustomer = editCustomer(id, { name, cpf, city, phone });
+
+    res.send(editedCustomer);
+  } catch (error) {
+    res.status(error.status).json(error);
+  }
 });
 
-// Delete customer by ID
+// Delete Customer By ID / DELETE
 app.delete('/customers/:id', (req, res) => {
   const { id } = req.params;
 
-  const result = deleteCustomer(id);
+  try {
+    const deletedCustomer = deleteCustomer(id);
 
-  res.send(result);
+    res.send(deletedCustomer);
+  } catch (error) {
+    res.status(error.status).json(error);
+  }
 });
 
-// Create order / POST
+//#########################
+// ORDERS
+//#########################
+// Create Order / POST
 app.post('/orders', (req, res) => {
   const { customerId, amount } = req.body;
 
-  const order = { customerId, amount };
+  try {
+    const order = { customerId, amount };
 
-  const createdOrder = createOrder(order);
+    const createdOrder = createOrder(order);
 
-  res.status(201).json(createdOrder);
+    res.status(201).json(createdOrder);
+  } catch (error) {
+    res.status(error.status).json(error);
+  }
 });
 
-// Get orders / GET
+// Get All Orders / GET
 app.get('/orders', (req, res) => {
-  const orders = getAllOrders();
+  try {
+    const orders = getAllOrders();
 
-  res.json(orders);
+    res.json(orders);
+  } catch (error) {
+    res.status(error.status).json(error);
+  }
 });
 
-// Get order by ID / GET
+// Get Order By ID / GET
 app.get('/orders/:id', (req, res) => {
   const { id } = req.params;
 
-  const order = getOrderById(id);
+  try {
+    const order = getOrderById(id);
 
-  res.json(order);
+    res.json(order);
+  } catch (error) {
+    res.status(error.status).json(error);
+  }
 });
 
 app.use((req, res, next) => {
