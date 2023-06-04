@@ -1,4 +1,5 @@
 import { getAllCustomers } from './customers.js';
+import { validateOrder } from './validations/validateOrder.js';
 
 const orders = [];
 
@@ -13,14 +14,10 @@ export function createOrder({ customerId, amount }) {
       customer => customer.id === Number(customerId),
     );
 
-    if (!customerId || !amount)
-      throw { status: 400, message: 'All fields are required' };
-
     if (customerIndex === -1)
       throw { status: 404, message: 'Customer not found' };
 
-    if (amount === 0 || amount < 0)
-      throw { status: 422, message: 'Amount must be greater than zero' };
+    validateOrder(customerId, amount);
 
     const order = {
       id: (initialId += 1),
@@ -47,7 +44,7 @@ export function getAllOrders() {
   try {
     // Verificar isso com professor
     if (orders.length === 0) {
-      throw { status: 404, name: 'Error', message: 'Orders not found' };
+      throw { status: 404, message: 'Orders not found' };
     }
 
     return orders;
@@ -65,8 +62,7 @@ export function getOrderById(id) {
   try {
     const orderById = orders.find(order => order.id === Number(id));
 
-    if (!orderById)
-      throw { status: 404, name: 'Error', message: 'Customer not found' };
+    if (!orderById) throw { status: 404, message: 'Customer not found' };
 
     return orderById;
   } catch (error) {

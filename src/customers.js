@@ -1,3 +1,5 @@
+import { validateCustomer } from './validations/validateCustomer.js';
+
 let customers = [];
 
 let initialId = 0;
@@ -5,14 +7,13 @@ let initialId = 0;
 // Create customer / POST
 export function createCustomer({ name, cpf, city, phone }) {
   try {
-    if (!name || !cpf || !city || !phone)
-      throw { status: 400, name: 'Error', message: 'All fields are required' };
+    validateCustomer(name, cpf, city, phone);
 
     const customer = {
       id: (initialId += 1),
-      name,
+      name: name.toUpperCase(),
       cpf,
-      city,
+      city: city.toUpperCase(),
       phone,
       points: 0,
       createdAt: new Date(),
@@ -46,8 +47,7 @@ export function getCustomerById(id) {
   try {
     const customerById = customers.find(customer => customer.id === Number(id));
 
-    if (!customerById)
-      throw { status: 404, name: 'Error', message: 'Customer not found' };
+    if (!customerById) throw { status: 404, message: 'Customer not found' };
 
     return customerById;
   } catch (error) {
@@ -67,10 +67,10 @@ export function editCustomer(id, { name, cpf, city, phone }) {
     );
 
     if (customerIndex === -1)
-      throw { status: 404, name: 'Error', message: 'Customer not found' };
+      throw { status: 404, message: 'Customer not found' };
 
     if (!name && !cpf && !city && !phone)
-      throw { status: 400, name: 'Error', message: 'No field was informed' };
+      throw { status: 400, message: 'No field was informed' };
 
     if (name) customers[customerIndex].name = name;
     if (cpf) customers[customerIndex].cpf = cpf;
@@ -96,8 +96,7 @@ export function deleteCustomer(id) {
       customer => customer.id === Number(id),
     );
 
-    if (!customerDeleted)
-      throw { status: 404, name: 'Error', message: 'Customer not found' };
+    if (!customerDeleted) throw { status: 404, message: 'Customer not found' };
 
     customers = customers.filter(customer => customer.id !== Number(id));
 
