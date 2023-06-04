@@ -22,6 +22,8 @@ export function createOrder({ customerId, amount }) {
     id: (initialId += 1),
     customerId,
     amount,
+    createdAt: new Date(),
+    updatedAt: new Date(),
   };
 
   orders.push(order);
