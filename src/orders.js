@@ -4,41 +4,76 @@ const orders = [];
 
 let initialId = 0;
 
+// Create Order / POST
 export function createOrder({ customerId, amount }) {
-  const customers = getAllCustomers();
+  try {
+    const customers = getAllCustomers();
 
-  const customerIndex = customers.findIndex(
-    customer => customer.id === Number(customerId),
-  );
+    const customerIndex = customers.findIndex(
+      customer => customer.id === Number(customerId),
+    );
 
-  if (customerIndex === -1) return { message: 'Customer not found' };
+    if (!customerId || !amount)
+      throw { status: 400, message: 'All fields are required' };
 
-  if (amount === 0 || amount < 0)
-    return { message: 'Amount must be greater than zero' };
+    if (customerIndex === -1)
+      throw { status: 404, message: 'Customer not found' };
 
-  if (!customerId || !amount) return { message: 'All fields are required' };
+    if (amount === 0 || amount < 0)
+      throw { status: 422, message: 'Amount must be greater than zero' };
 
-  const order = {
-    id: (initialId += 1),
-    customerId,
-    amount,
-    createdAt: new Date(),
-    updatedAt: new Date(),
-  };
+    const order = {
+      id: (initialId += 1),
+      customerId,
+      amount,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    };
 
-  orders.push(order);
+    orders.push(order);
 
-  return order;
+    return order;
+  } catch (error) {
+    throw {
+      status: error.status || 500,
+      name: error.name,
+      message: error.message,
+    };
+  }
 }
 
+// Get All Orders / GET
 export function getAllOrders() {
-  return orders;
+  try {
+    // Verificar isso com professor
+    if (orders.length === 0) {
+      throw { status: 404, name: 'Error', message: 'Orders not found' };
+    }
+
+    return orders;
+  } catch (error) {
+    throw {
+      status: error.status || 500,
+      name: error.name,
+      message: error.message,
+    };
+  }
 }
 
+// Get Order By ID / GET
 export function getOrderById(id) {
-  return (
-    orders.find(order => order.id === Number(id)) || {
-      message: 'Order not found',
-    }
-  );
+  try {
+    const orderById = orders.find(order => order.id === Number(id));
+
+    if (!orderById)
+      throw { status: 404, name: 'Error', message: 'Customer not found' };
+
+    return orderById;
+  } catch (error) {
+    throw {
+      status: error.status || 500,
+      name: error.name,
+      message: error.message,
+    };
+  }
 }
