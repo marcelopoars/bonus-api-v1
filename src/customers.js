@@ -13,6 +13,8 @@ export function createCustomer({ name, cpf, city, phone }) {
     city,
     phone,
     points: 0,
+    createdAt: new Date(),
+    updatedAt: new Date(),
   };
 
   customers.push(customer);
@@ -46,6 +48,8 @@ export function editCustomer(id, { name, cpf, city, phone }) {
   if (cpf) customers[customerIndex].cpf = cpf;
   if (city) customers[customerIndex].city = city;
   if (phone) customers[customerIndex].phone = phone;
+
+  customers[customerIndex].updatedAt = new Date();
 
   return customers[customerIndex];
 }
