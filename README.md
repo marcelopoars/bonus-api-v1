@@ -1,10 +1,10 @@
-# Projeto Bonus API
+# Projeto CASHBACK API
 
 Projeto desenvolvido na disciplina de `Desenvolvimento de Serviços e APIs` do curso de Análise e Desenvolvimento de Sistemas - Faculdade UniSenac - SENAC-RS.
 
 ## Sobre o sistema
 
-Este programa permite o usuário cadastrar clientes e registrar vendas. Cada venda registrada, gera pontos para o cliente. Estes pontos são convertidos em dinheiro, e posteriormente o cliente poderá resgatar em produtos.
+Esta API tem como funcionalidades principais o cadastro de clientes (Customers) e o registro de vendas (Orders). A cada veda é gerado um valor de CASHBACK para o cliente, que na sua próxima compra, receberá este valor como desconto. No momento o percentual de CASHBACK por venda está fixado em 15%.
 
 ## Install
 
