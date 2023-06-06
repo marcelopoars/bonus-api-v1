@@ -15,7 +15,7 @@ export function createCustomer({ name, cpf, city, phone }) {
       cpf,
       city: city.toUpperCase(),
       phone,
-      points: 0,
+      cashback: 0,
       createdAt: new Date(),
       updatedAt: new Date(),
     };
@@ -26,7 +26,6 @@ export function createCustomer({ name, cpf, city, phone }) {
   } catch (error) {
     throw {
       status: error.status || 500,
-      name: error.name,
       message: error.message,
     };
   }
@@ -38,7 +37,7 @@ export function getAllCustomers() {
     // Verificar como lançar erro 404 quando não encontrar clientes cadastrados
     return customers;
   } catch (error) {
-    throw { status: 500, name: error.name, message: error.message };
+    throw { status: 500, message: error.message };
   }
 }
 
@@ -53,13 +52,12 @@ export function getCustomerById(id) {
   } catch (error) {
     throw {
       status: error.status || 500,
-      name: error.name,
       message: error.message,
     };
   }
 }
 
-// Edit Customer By ID / POST
+// Edit Customer By ID / PUT
 export function editCustomer(id, { name, cpf, city, phone }) {
   try {
     const customerIndex = customers.findIndex(
@@ -83,7 +81,6 @@ export function editCustomer(id, { name, cpf, city, phone }) {
   } catch (error) {
     throw {
       status: error.status || 500,
-      name: error.name,
       message: error.message,
     };
   }
@@ -104,7 +101,6 @@ export function deleteCustomer(id) {
   } catch (error) {
     throw {
       status: error.status || 500,
-      name: error.name,
       message: error.message,
     };
   }
