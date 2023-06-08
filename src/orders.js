@@ -1,6 +1,9 @@
 import { customers } from './customers.js';
 import { findOneOnArray } from './utils/findOneOnArray.js';
-import { validateOnCreateOrder } from './validations/OrderValidations/index.js';
+import {
+  validateOnCreateOrder,
+  validateIfOrderExists,
+} from './validations/OrderValidations/index.js';
 
 export const orders = [];
 
@@ -74,9 +77,7 @@ export function getAllOrders() {
 // Get Order By ID / GET
 export function getOrderById(id) {
   try {
-    const orderById = findOneOnArray(id, orders);
-
-    if (!orderById) throw { status: 404, message: 'Order not found' };
+    const orderById = validateIfOrderExists(id);
 
     return orderById;
   } catch (error) {
