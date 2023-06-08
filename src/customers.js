@@ -1,9 +1,11 @@
+
 import {
+  validateIfCustomerExists,
   validateOnCreateCustomer,
   validateOnEditCustomer,
 } from './validations/CustomerValidations/index.js';
 
-let customers = [];
+export let customers = [];
 
 let initialId = 0;
 
@@ -48,9 +50,7 @@ export function getAllCustomers() {
 // Get Customer By ID / GET
 export function getCustomerById(id) {
   try {
-    const customerById = customers.find(customer => customer.id === Number(id));
-
-    if (!customerById) throw { status: 404, message: 'Customer not found' };
+    const customerById = validateIfCustomerExists(id);
 
     return customerById;
   } catch (error) {
@@ -89,15 +89,11 @@ export function editCustomer(id, { name, cpf, city, phone }) {
 // Delete Customer By ID / DELETE
 export function deleteCustomer(id) {
   try {
-    const customerDeleted = customers.find(
-      customer => customer.id === Number(id),
-    );
-
-    if (!customerDeleted) throw { status: 404, message: 'Customer not found' };
+    const customerDeleted = validateIfCustomerExists(id);
 
     customers = customers.filter(customer => customer.id !== Number(id));
 
-    return { maessage: 'Customer has been deleted', id };
+    return { maessage: 'Customer has been deleted', customerDeleted };
   } catch (error) {
     throw {
       status: error.status || 500,

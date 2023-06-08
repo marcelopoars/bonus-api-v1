@@ -1,16 +1,17 @@
-import { getAllCustomers } from './customers.js';
-import { validateOrder } from './validations/validateOrder.js';
+import { customers } from './customers.js';
+import { findOneOnArray } from './utils/findOneOnArray.js';
+import { validateOnCreateOrder } from './validations/OrderValidations/index.js';
 
-const orders = [];
+export const orders = [];
 
 let initialId = 0;
 
 // Create Order / POST
-export function createOrder({ customerId, amount }) {
-  try {
-    validateOrder(customerId, amount);
+export function createOrder(order) {
+  const { customerId, amount } = order;
 
-    const customers = getAllCustomers();
+  try {
+    validateOnCreateOrder(customerId, amount);
 
     const customerIndex = customers.findIndex(
       customer => customer.id === Number(customerId),
@@ -20,7 +21,11 @@ export function createOrder({ customerId, amount }) {
     const currentCustomerBashback = customers[customerIndex].cashback;
 
     if (currentCustomerBashback > amount)
-      throw { status: 404, message: 'Cashback não pode ser MAIOR que amount' };
+      throw {
+        status: 404,
+        message: 'Amount precisa ser maior que o cashback do cliente',
+        cashback: currentCustomerBashback,
+      };
 
     // Calcula o valor da venda baseado no cashback do cliente
     const amountByOrder =
@@ -49,6 +54,7 @@ export function createOrder({ customerId, amount }) {
     throw {
       status: error.status || 500,
       message: error.message,
+      ...error,
     };
   }
 }
@@ -68,7 +74,7 @@ export function getAllOrders() {
 // Get Order By ID / GET
 export function getOrderById(id) {
   try {
-    const orderById = orders.find(order => order.id === Number(id));
+    const orderById = findOneOnArray(id, orders);
 
     if (!orderById) throw { status: 404, message: 'Order not found' };
 

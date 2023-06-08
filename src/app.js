@@ -105,14 +105,12 @@ app.delete('/customers/:id', (req, res) => {
 //#########################
 // Create Order / POST
 app.post('/orders', (req, res) => {
-  const { customerId, amount } = req.body;
+  const createdOrderBody = req.body;
 
   try {
-    const order = { customerId, amount };
+    const order = createOrder(createdOrderBody);
 
-    const createdOrder = createOrder(order);
-
-    res.status(201).json(createdOrder);
+    res.status(201).json(order);
   } catch (error) {
     res.status(error.status).json(error);
   }
