@@ -1,5 +1,5 @@
 {
-  "name": "bonus-api-v1",
+  "name": "cashback-api-in-memory",
   "version": "1.9.0",
   "description": "Projeto desenvolvido na disciplina de Desenvolvimento de Serviços e APIs do curso de Análise e Desenvolvimento de Sistemas - Faculdade UniSenac - SENAC-RS.",
   "main": "src/app.js",
