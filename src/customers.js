@@ -1,7 +1,7 @@
 import {
-  validateCreateCustomer,
-  validateEditCustomer,
-} from './validations/validateCustomer.js';
+  validateOnCreateCustomer,
+  validateOnEditCustomer,
+} from './validations/CustomerValidations/index.js';
 
 let customers = [];
 
@@ -12,7 +12,7 @@ export function createCustomer(customer) {
   const { name, cpf, city, phone } = customer;
 
   try {
-    validateCreateCustomer(name, cpf, city, phone);
+    validateOnCreateCustomer(name, cpf, city, phone);
 
     const customer = {
       id: (initialId += 1),
@@ -68,10 +68,7 @@ export function editCustomer(id, { name, cpf, city, phone }) {
       customer => customer.id === Number(id),
     );
 
-    if (customerIndex === -1)
-      throw { status: 404, message: 'Customer not found' };
-
-    validateEditCustomer(name, cpf, city, phone);
+    validateOnEditCustomer(id, name, cpf, city, phone);
 
     if (name) customers[customerIndex].name = name;
     if (cpf) customers[customerIndex].cpf = cpf;

@@ -76,10 +76,9 @@ app.get('/customers/:id', (req, res) => {
 // Edit Customer By ID / PUT
 app.put('/customers/:id', (req, res) => {
   const { id } = req.params;
+  const { name, cpf, city, phone } = req.body;
 
   try {
-    const { name, cpf, city, phone } = req.body;
-
     const editedCustomer = editCustomer(id, { name, cpf, city, phone });
 
     res.send(editedCustomer);
