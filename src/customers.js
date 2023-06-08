@@ -5,7 +5,9 @@ let customers = [];
 let initialId = 0;
 
 // Create customer / POST
-export function createCustomer({ name, cpf, city, phone }) {
+export function createCustomer(customer) {
+  const { name, cpf, city, phone } = customer;
+
   try {
     validateCustomer(name, cpf, city, phone);
 

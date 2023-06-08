@@ -38,14 +38,12 @@ app.get('/', (req, res) => {
 
 // Create customer / POST
 app.post('/customers', (req, res) => {
-  const { name, cpf, city, phone } = req.body;
-
   try {
-    const customer = { name, cpf, city, phone };
+    const customerBody = req.body;
 
-    const createdCustomer = createCustomer(customer);
+    const customer = createCustomer(customerBody);
 
-    res.status(201).json(createdCustomer);
+    res.status(201).json(customer);
   } catch (error) {
     res.status(error.status).json(error);
   }
@@ -75,7 +73,7 @@ app.get('/customers/:id', (req, res) => {
   }
 });
 
-// Edit Customer By ID / POST
+// Edit Customer By ID / PUT
 app.put('/customers/:id', (req, res) => {
   const { id } = req.params;
 
