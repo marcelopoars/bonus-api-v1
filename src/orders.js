@@ -8,16 +8,13 @@ let initialId = 0;
 // Create Order / POST
 export function createOrder({ customerId, amount }) {
   try {
+    validateOrder(customerId, amount);
+
     const customers = getAllCustomers();
 
     const customerIndex = customers.findIndex(
       customer => customer.id === Number(customerId),
     );
-
-    if (customerIndex === -1)
-      throw { status: 404, message: 'Customer not found' };
-
-    validateOrder(customerId, amount);
 
     // Descobrir quanto de cashback o usuário tem
     const currentCustomerBashback = customers[customerIndex].cashback;
@@ -59,11 +56,6 @@ export function createOrder({ customerId, amount }) {
 // Get All Orders / GET
 export function getAllOrders() {
   try {
-    // Verificar isso com professor
-    if (orders.length === 0) {
-      throw { status: 404, message: 'Orders not found' };
-    }
-
     return orders;
   } catch (error) {
     throw {

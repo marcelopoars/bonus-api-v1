@@ -1,4 +1,7 @@
-import { validateCustomer } from './validations/validateCustomer.js';
+import {
+  validateCreateCustomer,
+  validateEditCustomer,
+} from './validations/validateCustomer.js';
 
 let customers = [];
 
@@ -9,7 +12,7 @@ export function createCustomer(customer) {
   const { name, cpf, city, phone } = customer;
 
   try {
-    validateCustomer(name, cpf, city, phone);
+    validateCreateCustomer(name, cpf, city, phone);
 
     const customer = {
       id: (initialId += 1),
@@ -36,10 +39,9 @@ export function createCustomer(customer) {
 // Get All Customers / GET
 export function getAllCustomers() {
   try {
-    // Verificar como lançar erro 404 quando não encontrar clientes cadastrados
     return customers;
   } catch (error) {
-    throw { status: 500, message: error.message };
+    throw { status: error.status || 500, message: error.message };
   }
 }
 
@@ -69,8 +71,7 @@ export function editCustomer(id, { name, cpf, city, phone }) {
     if (customerIndex === -1)
       throw { status: 404, message: 'Customer not found' };
 
-    if (!name && !cpf && !city && !phone)
-      throw { status: 400, message: 'No field was informed' };
+    validateEditCustomer(name, cpf, city, phone);
 
     if (name) customers[customerIndex].name = name;
     if (cpf) customers[customerIndex].cpf = cpf;

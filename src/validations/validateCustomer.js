@@ -1,12 +1,6 @@
 import { validateType } from './commonValidations.js';
 
-export function validateCustomer(name, cpf, city, phone) {
-  if (!name || !cpf || !city || !phone)
-    throw {
-      status: 400,
-      message: 'All fields are required',
-    };
-
+function defaultValidations(name, cpf, city, phone) {
   validateType(name, 'string');
   validateType(cpf, 'string');
   validateType(city, 'string');
@@ -30,9 +24,26 @@ export function validateCustomer(name, cpf, city, phone) {
       message: 'City must be more than 5 characters',
     };
 
-    if (phone.length !== 14)
+  if (phone.length !== 14)
     throw {
       status: 422,
       message: 'Phone needs to be in this format: (99)99999-9999',
     };
+}
+
+export function validateCreateCustomer(name, cpf, city, phone) {
+  if (!name || !cpf || !city || !phone)
+    throw {
+      status: 400,
+      message: 'All fields are required',
+    };
+
+  defaultValidations(name, cpf, city, phone);
+}
+
+export function validateEditCustomer(name, cpf, city, phone) {
+  if (!name && !cpf && !city && !phone)
+    throw { status: 400, message: 'No field was informed' };
+
+  defaultValidations(name, cpf, city, phone);
 }
