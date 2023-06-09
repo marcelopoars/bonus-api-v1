@@ -1,4 +1,4 @@
-import { validateType } from '../../utils/validateType.js';
+import { getCustomerBashback, validateType } from '../../utils/index.js';
 import { validateIfCustomerExists } from '../CustomerValidations/index.js';
 
 export function validateOnCreateOrder(customerId, amount) {
@@ -9,6 +9,15 @@ export function validateOnCreateOrder(customerId, amount) {
     };
 
   validateIfCustomerExists(customerId);
+
+  const customerBashback = getCustomerBashback(customerId);
+
+  if (customerBashback > amount)
+    throw {
+      status: 404,
+      message: 'Amount precisa ser maior que o cashback do cliente',
+      cashback: customerBashback,
+    };
 
   if (amount <= 0)
     throw {

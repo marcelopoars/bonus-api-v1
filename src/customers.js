@@ -7,7 +7,7 @@ import {
 
 export let customers = [];
 
-let initialId = 0;
+let initialCustomerId = 0;
 
 // Create customer / POST
 export function createCustomer(customer) {
@@ -17,7 +17,7 @@ export function createCustomer(customer) {
     validateOnCreateCustomer(name, cpf, city, phone);
 
     const customer = {
-      id: (initialId += 1),
+      id: (initialCustomerId += 1),
       name: name.toUpperCase(),
       cpf,
       city: city.toUpperCase(),

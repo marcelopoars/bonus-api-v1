@@ -1,5 +1,5 @@
-export function calculateAmountByOrder(currentCustomerBashback, amount) {
-  return currentCustomerBashback === 0
+export function calculateAmountByOrder(customerBashback, amount) {
+  return customerBashback === 0
     ? amount
-    : Number((amount - currentCustomerBashback).toFixed(2));
+    : Number((amount - customerBashback).toFixed(2));
 }

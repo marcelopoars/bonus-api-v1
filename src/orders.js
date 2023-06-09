@@ -4,6 +4,7 @@ import {
   calculateAmountByOrder,
   calculateCashback,
   findIndexOnArray,
+  getCustomerBashback,
 } from './utils/index.js';
 
 import {
@@ -13,7 +14,7 @@ import {
 
 export const orders = [];
 
-let initialId = 0;
+let initialOrderId = 0;
 
 // Create Order / POST
 export function createOrder(order) {
@@ -24,31 +25,17 @@ export function createOrder(order) {
 
     const customerIndex = findIndexOnArray(customerId, customers);
 
-    // Descobrir quanto de cashback o usuário tem
-    const currentCustomerBashback = customers[customerIndex].cashback;
+    const customerBashback = getCustomerBashback(customerId);
 
-    if (currentCustomerBashback > amount)
-      throw {
-        status: 404,
-        message: 'Amount precisa ser maior que o cashback do cliente',
-        cashback: currentCustomerBashback,
-      };
+    const amountByOrder = calculateAmountByOrder(customerBashback, amount);
 
-    // Valor da venda menos o saldo de chashback do cliente
-    const amountByOrder = calculateAmountByOrder(
-      currentCustomerBashback,
-      amount,
-    );
-
-    // 15% sobre o valor da compra
     const cashbackByOrder = calculateCashback(amountByOrder);
 
-    // Atualiza o valor do cashback do usuário
     customers[customerIndex].cashback = cashbackByOrder;
     customers[customerIndex].updatedAt = new Date();
 
     const order = {
-      id: (initialId += 1),
+      id: (initialOrderId += 1),
       customerId,
       amount: amountByOrder,
       createdAt: new Date(),
