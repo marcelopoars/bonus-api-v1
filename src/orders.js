@@ -1,45 +1,41 @@
-import { getAllCustomers } from './customers.js';
-import { validateOrder } from './validations/validateOrder.js';
+import { customers } from './customers.js';
 
-const orders = [];
+import {
+  calculateAmountByOrder,
+  calculateCashback,
+  findIndexOnArray,
+  getCustomerBashback,
+} from './utils/index.js';
 
-let initialId = 0;
+import {
+  validateIfOrderExists,
+  validateOnCreateOrder,
+} from './validations/OrderValidations/index.js';
+
+export const orders = [];
+
+let initialOrderId = 0;
 
 // Create Order / POST
-export function createOrder({ customerId, amount }) {
+export function createOrder(order) {
+  const { customerId, amount } = order;
+
   try {
-    const customers = getAllCustomers();
+    validateOnCreateOrder(customerId, amount);
 
-    const customerIndex = customers.findIndex(
-      customer => customer.id === Number(customerId),
-    );
+    const customerIndex = findIndexOnArray(customerId, customers);
 
-    if (customerIndex === -1)
-      throw { status: 404, message: 'Customer not found' };
+    const customerBashback = getCustomerBashback(customerId);
 
-    validateOrder(customerId, amount);
+    const amountByOrder = calculateAmountByOrder(customerBashback, amount);
 
-    // Descobrir quanto de cashback o usuário tem
-    const currentCustomerBashback = customers[customerIndex].cashback;
+    const cashbackByOrder = calculateCashback(amountByOrder);
 
-    if (currentCustomerBashback > amount)
-      throw { status: 404, message: 'Cashback não pode ser MAIOR que amount' };
-
-    // Calcula o valor da venda baseado no cashback do cliente
-    const amountByOrder =
-      currentCustomerBashback === 0
-        ? amount
-        : Number((amount - currentCustomerBashback).toFixed(2));
-
-    // Calcula o valor do cashback desta venda
-    const cashbackByOrder = Number((amountByOrder * (15 / 100)).toFixed(2));
-
-    // Atualiza o valor do cashback do usuário
     customers[customerIndex].cashback = cashbackByOrder;
     customers[customerIndex].updatedAt = new Date();
 
     const order = {
-      id: (initialId += 1),
+      id: (initialOrderId += 1),
       customerId,
       amount: amountByOrder,
       createdAt: new Date(),
@@ -52,6 +48,7 @@ export function createOrder({ customerId, amount }) {
     throw {
       status: error.status || 500,
       message: error.message,
+      ...error,
     };
   }
 }
@@ -59,11 +56,6 @@ export function createOrder({ customerId, amount }) {
 // Get All Orders / GET
 export function getAllOrders() {
   try {
-    // Verificar isso com professor
-    if (orders.length === 0) {
-      throw { status: 404, message: 'Orders not found' };
-    }
-
     return orders;
   } catch (error) {
     throw {
@@ -76,9 +68,7 @@ export function getAllOrders() {
 // Get Order By ID / GET
 export function getOrderById(id) {
   try {
-    const orderById = orders.find(order => order.id === Number(id));
-
-    if (!orderById) throw { status: 404, message: 'Order not found' };
+    const orderById = validateIfOrderExists(id);
 
     return orderById;
   } catch (error) {

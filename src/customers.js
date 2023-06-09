@@ -1,16 +1,23 @@
-import { validateCustomer } from './validations/validateCustomer.js';
+import { findIndexOnArray } from './utils/index.js';
+import {
+  validateIfCustomerExists,
+  validateOnCreateCustomer,
+  validateOnEditCustomer,
+} from './validations/CustomerValidations/index.js';
 
-let customers = [];
+export let customers = [];
 
-let initialId = 0;
+let initialCustomerId = 0;
 
 // Create customer / POST
-export function createCustomer({ name, cpf, city, phone }) {
+export function createCustomer(customer) {
+  const { name, cpf, city, phone } = customer;
+
   try {
-    validateCustomer(name, cpf, city, phone);
+    validateOnCreateCustomer(name, cpf, city, phone);
 
     const customer = {
-      id: (initialId += 1),
+      id: (initialCustomerId += 1),
       name: name.toUpperCase(),
       cpf,
       city: city.toUpperCase(),
@@ -34,19 +41,16 @@ export function createCustomer({ name, cpf, city, phone }) {
 // Get All Customers / GET
 export function getAllCustomers() {
   try {
-    // Verificar como lançar erro 404 quando não encontrar clientes cadastrados
     return customers;
   } catch (error) {
-    throw { status: 500, message: error.message };
+    throw { status: error.status || 500, message: error.message };
   }
 }
 
 // Get Customer By ID / GET
 export function getCustomerById(id) {
   try {
-    const customerById = customers.find(customer => customer.id === Number(id));
-
-    if (!customerById) throw { status: 404, message: 'Customer not found' };
+    const customerById = validateIfCustomerExists(id);
 
     return customerById;
   } catch (error) {
@@ -60,15 +64,9 @@ export function getCustomerById(id) {
 // Edit Customer By ID / PUT
 export function editCustomer(id, { name, cpf, city, phone }) {
   try {
-    const customerIndex = customers.findIndex(
-      customer => customer.id === Number(id),
-    );
-
-    if (customerIndex === -1)
-      throw { status: 404, message: 'Customer not found' };
-
-    if (!name && !cpf && !city && !phone)
-      throw { status: 400, message: 'No field was informed' };
+    validateOnEditCustomer(id, name, cpf, city, phone);
+    
+    const customerIndex = findIndexOnArray(id, customers);
 
     if (name) customers[customerIndex].name = name;
     if (cpf) customers[customerIndex].cpf = cpf;
@@ -89,15 +87,11 @@ export function editCustomer(id, { name, cpf, city, phone }) {
 // Delete Customer By ID / DELETE
 export function deleteCustomer(id) {
   try {
-    const customerDeleted = customers.find(
-      customer => customer.id === Number(id),
-    );
-
-    if (!customerDeleted) throw { status: 404, message: 'Customer not found' };
+    const customerDeleted = validateIfCustomerExists(id);
 
     customers = customers.filter(customer => customer.id !== Number(id));
 
-    return { maessage: 'Customer has been deleted', id };
+    return { maessage: 'Customer has been deleted', customerDeleted };
   } catch (error) {
     throw {
       status: error.status || 500,
