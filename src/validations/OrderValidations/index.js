@@ -1,3 +1,5 @@
-export * from './validateIfOrderExists.js';
-export * from './validateOnCreateOrder.js';
+const validateOnCreateOrder = require('./validateOnCreateOrder');
 
+module.exports = {
+  validateOnCreateOrder,
+};

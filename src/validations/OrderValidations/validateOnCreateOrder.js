@@ -1,14 +1,13 @@
-import { getCustomerBashback, validateType } from '../../utils/index.js';
-import { validateIfCustomerExists } from '../CustomerValidations/index.js';
+const { getCustomerBashback } = require('../../utils');
 
-export function validateOnCreateOrder(customerId, amount) {
+const validateType = require('../commons/validateType');
+
+function validateOnCreateOrder(customerId, amount) {
   if (!customerId || !amount)
     throw {
       status: 400,
       message: 'All fields are required',
     };
-
-  validateIfCustomerExists(customerId);
 
   const customerBashback = getCustomerBashback(customerId);
 
@@ -25,6 +24,8 @@ export function validateOnCreateOrder(customerId, amount) {
       message: 'Amount must be greater than zero',
     };
 
-  validateType(customerId, 'number');
-  validateType(amount, 'number');
+  validateType({ value: customerId, name: 'customerId', type: 'number' });
+  validateType({ value: amount, name: 'amount', type: 'number' });
 }
+
+module.exports = validateOnCreateOrder;

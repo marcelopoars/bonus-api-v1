@@ -1,29 +1,35 @@
-import { customers } from './customers.js';
+const { getAllCustomers } = require('./customers');
 
-import {
+const {
+  getCustomerBashback,
   calculateAmountByOrder,
   calculateCashback,
-  findIndexOnArray,
-  getCustomerBashback,
-} from './utils/index.js';
+} = require('./utils');
 
-import {
-  validateIfOrderExists,
-  validateOnCreateOrder,
-} from './validations/OrderValidations/index.js';
+const { validateOnCreateOrder } = require('./validations/OrderValidations');
 
-export const orders = [];
+const orders = [];
 
 let initialOrderId = 0;
 
 // Create Order / POST
-export function createOrder(order) {
+function createOrder(order) {
   const { customerId, amount } = order;
 
   try {
+    const customers = getAllCustomers();
+
+    const customer = customers.find(
+      element => element.id === Number(customerId),
+    );
+
+    if (!customer) throw { status: 404, message: 'Customer not found' };
+
     validateOnCreateOrder(customerId, amount);
 
-    const customerIndex = findIndexOnArray(customerId, customers);
+    const customerIndex = customers.findIndex(
+      element => element.id === Number(customerId),
+    );
 
     const customerBashback = getCustomerBashback(customerId);
 
@@ -54,7 +60,7 @@ export function createOrder(order) {
 }
 
 // Get All Orders / GET
-export function getAllOrders() {
+function getAllOrders() {
   try {
     return orders;
   } catch (error) {
@@ -66,9 +72,11 @@ export function getAllOrders() {
 }
 
 // Get Order By ID / GET
-export function getOrderById(id) {
+function getOrderById(id) {
   try {
-    const orderById = validateIfOrderExists(id);
+    const orderById = orders.find(order => order.id === Number(id));
+
+    if (!orderById) throw { status: 404, message: 'Order not found' };
 
     return orderById;
   } catch (error) {
@@ -78,3 +86,9 @@ export function getOrderById(id) {
     };
   }
 }
+
+module.exports = {
+  createOrder,
+  getAllOrders,
+  getOrderById,
+};

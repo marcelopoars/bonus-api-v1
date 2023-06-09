@@ -1,13 +1,15 @@
-import {
+const {
   validateCity,
   validateCpf,
   validateName,
   validatePhone,
-} from './validateCustomerFields.js';
+} = require('./validateCustomerFields');
 
-export function defaultCustomerValidations(name, cpf, city, phone) {
+function defaultCustomerValidations(name, cpf, city, phone) {
   validateName(name);
   validateCpf(cpf);
   validateCity(city);
   validatePhone(phone);
 }
+
+module.exports = defaultCustomerValidations;

@@ -1,16 +1,12 @@
-import { findIndexOnArray } from './utils/index.js';
-import {
-  validateIfCustomerExists,
+const {
   validateOnCreateCustomer,
-  validateOnEditCustomer,
-} from './validations/CustomerValidations/index.js';
+} = require('./validations/CustomerValidations');
 
-export let customers = [];
-
+let customers = [];
 let initialCustomerId = 0;
 
 // Create customer / POST
-export function createCustomer(customer) {
+function createCustomer(customer) {
   const { name, cpf, city, phone } = customer;
 
   try {
@@ -39,7 +35,7 @@ export function createCustomer(customer) {
 }
 
 // Get All Customers / GET
-export function getAllCustomers() {
+function getAllCustomers() {
   try {
     return customers;
   } catch (error) {
@@ -48,9 +44,11 @@ export function getAllCustomers() {
 }
 
 // Get Customer By ID / GET
-export function getCustomerById(id) {
+function getCustomerById(id) {
   try {
-    const customerById = validateIfCustomerExists(id);
+    const customerById = customers.find(customer => customer.id === Number(id));
+
+    if (!customerById) throw { status: 404, message: 'Customer not found' };
 
     return customerById;
   } catch (error) {
@@ -62,11 +60,13 @@ export function getCustomerById(id) {
 }
 
 // Edit Customer By ID / PUT
-export function editCustomer(id, { name, cpf, city, phone }) {
+function editCustomer(id, { name, cpf, city, phone }) {
   try {
-    validateOnEditCustomer(id, name, cpf, city, phone);
-    
-    const customerIndex = findIndexOnArray(id, customers);
+    const editedCustomer = customers.find(customer => customer.id === Number(id));
+
+    if (!editedCustomer) throw { status: 404, message: 'Customer not found' };
+
+    const customerIndex = customers.findIndex(customer => customer.id === Number(id));
 
     if (name) customers[customerIndex].name = name;
     if (cpf) customers[customerIndex].cpf = cpf;
@@ -85,9 +85,13 @@ export function editCustomer(id, { name, cpf, city, phone }) {
 }
 
 // Delete Customer By ID / DELETE
-export function deleteCustomer(id) {
+function deleteCustomer(id) {
   try {
-    const customerDeleted = validateIfCustomerExists(id);
+    const customerDeleted = customers.find(
+      element => element.id === Number(id),
+    );
+
+    if (!customerDeleted) throw { status: 404, message: 'Customer not found' };
 
     customers = customers.filter(customer => customer.id !== Number(id));
 
@@ -99,3 +103,11 @@ export function deleteCustomer(id) {
     };
   }
 }
+
+module.exports = {
+  createCustomer,
+  getAllCustomers,
+  getCustomerById,
+  editCustomer,
+  deleteCustomer,
+};

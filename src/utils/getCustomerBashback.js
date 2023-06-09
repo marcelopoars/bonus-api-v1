@@ -1,8 +1,13 @@
-import { customers } from '../customers.js';
-import { findIndexOnArray } from './findIndexOnArray.js';
+const { getAllCustomers } = require('../customers');
 
-export function getCustomerBashback(customerId) {
-  const customerIndex = findIndexOnArray(customerId, customers);
+function getCustomerBashback(customerId) {
+  const customers = getAllCustomers();
+
+  const customerIndex = customers.findIndex(
+    element => element.id === Number(customerId),
+  );
 
   return customers[customerIndex].cashback;
 }
+
+module.exports = getCustomerBashback;

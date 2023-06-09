@@ -1,14 +1,14 @@
-import express from 'express';
+const express = require('express');
 
-import {
+const {
   createCustomer,
   getAllCustomers,
   getCustomerById,
   editCustomer,
   deleteCustomer,
-} from './customers.js';
+} = require('./customers');
 
-import { createOrder, getAllOrders, getOrderById } from './orders.js';
+const { createOrder, getAllOrders, getOrderById } = require('./orders');
 
 const app = express();
 
@@ -50,7 +50,7 @@ app.post('/customers', (req, res) => {
 });
 
 // Get All Customers / GET
-app.get('/customers', (req, res) => {
+app.get('/customers', (_, res) => {
   try {
     const customers = getAllCustomers();
 

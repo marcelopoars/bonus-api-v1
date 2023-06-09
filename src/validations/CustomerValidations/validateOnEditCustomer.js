@@ -1,11 +1,10 @@
-import { defaultCustomerValidations } from './defaultCustomerValidations.js';
-import { validateIfCustomerExists } from './validateIfCustomerExists.js';
+const defaultCustomerValidations = require('./defaultCustomerValidations');
 
-export function validateOnEditCustomer(id, name, cpf, city, phone) {
-  validateIfCustomerExists(id);
-
+function validateOnEditCustomer(id, name, cpf, city, phone) {
   if (!name && !cpf && !city && !phone)
     throw { status: 400, message: 'No field was informed' };
 
   defaultCustomerValidations(name, cpf, city, phone);
 }
+
+module.exports = validateOnEditCustomer;

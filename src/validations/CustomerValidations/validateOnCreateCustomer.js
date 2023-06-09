@@ -1,6 +1,6 @@
-import { defaultCustomerValidations } from "./defaultCustomerValidations.js";
+const defaultCustomerValidations = require('./defaultCustomerValidations')
 
-export function validateOnCreateCustomer(name, cpf, city, phone) {
+function validateOnCreateCustomer(name, cpf, city, phone) {
   if (!name || !cpf || !city || !phone)
     throw {
       status: 400,
@@ -9,3 +9,5 @@ export function validateOnCreateCustomer(name, cpf, city, phone) {
 
   defaultCustomerValidations(name, cpf, city, phone);
 }
+
+module.exports = validateOnCreateCustomer;

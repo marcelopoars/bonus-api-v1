@@ -1,3 +1,7 @@
-export * from './validateIfCustomerExists.js';
-export * from './validateOnCreateCustomer.js';
-export * from './validateOnEditCustomer.js';
+const validateOnCreateCustomer = require('./validateOnCreateCustomer');
+const validateOnEditCustomer = require('./validateOnEditCustomer');
+
+module.exports = {
+  validateOnCreateCustomer,
+  validateOnEditCustomer,
+};

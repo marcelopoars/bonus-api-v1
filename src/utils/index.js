@@ -1,6 +1,9 @@
-export * from './calculateAmountByOrder.js';
-export * from './calculateCashback.js';
-export * from './findIndexOnArray.js';
-export * from './findOneOnArray.js';
-export * from './getCustomerBashback.js';
-export * from './validateType.js';
+const calculateAmountByOrder = require('./calculateAmountByOrder');
+const calculateCashback = require('./calculateCashback');
+const getCustomerBashback = require('./getCustomerBashback');
+
+module.exports = {
+  calculateAmountByOrder,
+  calculateCashback,
+  getCustomerBashback,
+};

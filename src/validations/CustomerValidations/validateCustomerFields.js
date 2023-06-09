@@ -1,49 +1,56 @@
-import { validateType } from '../../utils/index.js';
+const validateType = require('../commons/validateType');
 
-export function validateName(name) {
+function validateName(name) {
   if (name) {
-    validateType(name, 'string');
+    validateType({ value: name, fieldName: 'name' });
   }
 
-  if (name && name.length < 5)
+  if (name?.length < 5)
     throw {
       status: 422,
       message: 'Name must be more than 5 characters',
     };
 }
 
-export function validateCpf(cpf) {
+function validateCpf(cpf) {
   if (cpf) {
-    validateType(cpf, 'string');
+    validateType({ value: cpf, fieldName: 'cpf' });
   }
 
-  if (cpf && cpf.length !== 14)
+  if (cpf?.length !== 14)
     throw {
       status: 422,
       message: 'CPF needs to be in this format: 999.999.999-99',
     };
 }
 
-export function validateCity(city) {
+function validateCity(city) {
   if (city) {
-    validateType(city, 'string');
+    validateType({ value: city, fieldName: 'city' });
   }
 
-  if (city && city.length < 5)
+  if (city?.length < 5)
     throw {
       status: 422,
       message: 'City must be more than 5 characters',
     };
 }
 
-export function validatePhone(phone) {
+function validatePhone(phone) {
   if (phone) {
-    validateType(phone, 'string');
+    validateType({ value: phone, fieldName: 'phone' });
   }
 
-  if (phone && phone.length !== 14)
+  if (phone?.length !== 14)
     throw {
       status: 422,
       message: 'Phone needs to be in this format: (99)99999-9999',
     };
 }
+
+module.exports = {
+  validateName,
+  validateCpf,
+  validateCity,
+  validatePhone,
+};
