@@ -2,7 +2,7 @@
   "name": "cashback-api-in-memory",
   "version": "1.9.1",
   "description": "Projeto desenvolvido na disciplina de Desenvolvimento de Serviços e APIs do curso de Análise e Desenvolvimento de Sistemas - Faculdade UniSenac - SENAC-RS.",
-  "main": "src/app.js",
+  "main": "app.js",
   "scripts": {
     "dev": "node src/app.js"
   },
@@ -21,6 +21,10 @@
       "name": "Sohaib Mohammed"
     }
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/marcelopoars/cashback-api-in-memory"
+  },
   "license": "ISC",
   "dependencies": {
     "express": "^4.18.2"
