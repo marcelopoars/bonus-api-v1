@@ -1,5 +1,11 @@
 import { customers } from './customers.js';
-import { calculateCashback } from './utils/calculateCashback.js';
+
+import {
+  calculateAmountByOrder,
+  calculateCashback,
+  findIndexOnArray,
+} from './utils/index.js';
+
 import {
   validateIfOrderExists,
   validateOnCreateOrder,
@@ -16,9 +22,7 @@ export function createOrder(order) {
   try {
     validateOnCreateOrder(customerId, amount);
 
-    const customerIndex = customers.findIndex(
-      customer => customer.id === Number(customerId),
-    );
+    const customerIndex = findIndexOnArray(customerId, customers);
 
     // Descobrir quanto de cashback o usuário tem
     const currentCustomerBashback = customers[customerIndex].cashback;
@@ -30,13 +34,13 @@ export function createOrder(order) {
         cashback: currentCustomerBashback,
       };
 
-    // Calcula o valor da venda baseado no cashback do cliente
-    const amountByOrder =
-      currentCustomerBashback === 0
-        ? amount
-        : Number((amount - currentCustomerBashback).toFixed(2));
+    // Valor da venda menos o saldo de chashback do cliente
+    const amountByOrder = calculateAmountByOrder(
+      currentCustomerBashback,
+      amount,
+    );
 
-    // Calcula o valor do cashback desta venda
+    // 15% sobre o valor da compra
     const cashbackByOrder = calculateCashback(amountByOrder);
 
     // Atualiza o valor do cashback do usuário

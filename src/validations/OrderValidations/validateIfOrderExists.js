@@ -1,5 +1,5 @@
 import { orders } from '../../orders.js';
-import { findOneOnArray } from '../../utils/findOneOnArray.js';
+import { findOneOnArray } from '../../utils/index.js';
 
 export function validateIfOrderExists(id) {
   const order = findOneOnArray(id, orders);

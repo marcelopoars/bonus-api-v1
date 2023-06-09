@@ -1,4 +1,4 @@
-
+import { findIndexOnArray } from './utils/index.js';
 import {
   validateIfCustomerExists,
   validateOnCreateCustomer,
@@ -64,11 +64,9 @@ export function getCustomerById(id) {
 // Edit Customer By ID / PUT
 export function editCustomer(id, { name, cpf, city, phone }) {
   try {
-    const customerIndex = customers.findIndex(
-      customer => customer.id === Number(id),
-    );
-
     validateOnEditCustomer(id, name, cpf, city, phone);
+    
+    const customerIndex = findIndexOnArray(id, customers);
 
     if (name) customers[customerIndex].name = name;
     if (cpf) customers[customerIndex].cpf = cpf;

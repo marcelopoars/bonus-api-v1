@@ -1,4 +1,4 @@
-import { validateType } from '../commonValidations.js';
+import { validateType } from '../../utils/index.js';
 
 export function validateName(name) {
   if (name) {

@@ -1,5 +1,5 @@
 import { customers } from '../../customers.js';
-import { findOneOnArray } from '../../utils/findOneOnArray.js';
+import { findOneOnArray } from '../../utils/index.js';
 
 export function validateIfCustomerExists(id) {
   const customer = findOneOnArray(id, customers);

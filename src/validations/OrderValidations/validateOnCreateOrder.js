@@ -1,5 +1,5 @@
+import { validateType } from '../../utils/validateType.js';
 import { validateIfCustomerExists } from '../CustomerValidations/index.js';
-import { validateType } from '../commonValidations.js';
 
 export function validateOnCreateOrder(customerId, amount) {
   if (!customerId || !amount)
