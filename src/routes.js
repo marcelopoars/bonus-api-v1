@@ -8,5 +8,6 @@ const routes = Router();
 routes.post('/customers', customerController.create);
 routes.get('/customers', customerController.findAll);
 routes.get('/customers/:id', customerController.findOne);
+routes.put('/customers/:id', customerController.update);
 
 module.exports = routes;
