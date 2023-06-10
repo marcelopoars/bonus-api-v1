@@ -3,8 +3,8 @@ const {
   FindAllCustomerBusiness,
   FindOneCustomerBusiness,
   UpdateCustomerBusiness,
+  DeleteCustomerBusiness,
 } = require('../business');
-
 
 // Controller somente faz as chamadas para o business e retorna um valor
 module.exports = () => ({
@@ -59,5 +59,17 @@ module.exports = () => ({
     }
   },
 
-  delete: () => {},
+  delete: (req, res) => {
+    try {
+      const { id } = req.params;
+      
+      const deletedCustomer = DeleteCustomerBusiness().execute(id)
+
+      res.json(deletedCustomer);
+    } catch (error) {
+      res.status(error.status || 500).json({
+        message: error.message,
+      });
+    }
+  },
 });

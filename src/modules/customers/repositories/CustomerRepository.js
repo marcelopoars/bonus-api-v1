@@ -42,7 +42,13 @@ class CustomerRepository {
     return customers[customerIndex];
   }
 
-  delete() {}
+  delete(id) {
+    const deletedCustomer = customers.find(customer => customer._id === id);
+
+    customers = customers.filter(customer => customer._id !== id);
+
+    return { maessage: 'Customer has been deleted', deletedCustomer };
+  }
 }
 
 module.exports = CustomerRepository;
