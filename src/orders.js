@@ -17,13 +17,13 @@ function createOrder(order) {
   const { customerId, amount } = order;
 
   try {
-    const customers = getAllCustomers();
+    const customers = getCustomerById(customerId)
 
-    const customer = customers.find(
-      element => element.id === Number(customerId),
-    );
+    // const customer = customers.find(
+    //   element => element.id === Number(customerId),
+    // );
 
-    if (!customer) throw { status: 404, message: 'Customer not found' };
+    // if (!customer) throw { status: 404, message: 'Customer not found' };
 
     validateOnCreateOrder(customerId, amount);
 
