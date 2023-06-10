@@ -6,10 +6,10 @@ const {
 } = require('./validateCustomerFields');
 
 function defaultCustomerValidations(name, cpf, city, phone) {
-  validateName(name);
-  validateCpf(cpf);
-  validateCity(city);
-  validatePhone(phone);
+  if (name) validateName(name);
+  if (cpf) validateCpf(cpf);
+  if (city) validateCity(city);
+  if (phone) validatePhone(phone);
 }
 
 module.exports = defaultCustomerValidations;

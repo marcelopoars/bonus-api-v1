@@ -3,7 +3,12 @@
 // formatações
 
 const validateOnEditCustomer = require('../validations/validateOnEditCustomer');
-const { FindOneCustomerService } = require('../services');
+const {
+  FindOneCustomerService,
+  UpdateCustomerService,
+} = require('../services');
+
+const { formatString } = require('../../commons/utils');
 
 module.exports = () => ({
   execute: (id, { name, cpf, city, phone }) => {
@@ -13,6 +18,11 @@ module.exports = () => ({
 
     validateOnEditCustomer(name, cpf, city, phone);
 
-    return FindOneCustomerService().execute(id);
+    return UpdateCustomerService().execute(id, {
+      name: formatString(name),
+      cpf,
+      city: formatString(city),
+      phone,
+    });
   },
 });

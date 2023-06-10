@@ -2,8 +2,9 @@ const {
   CreateCustomerBusiness,
   FindAllCustomerBusiness,
   FindOneCustomerBusiness,
+  UpdateCustomerBusiness,
 } = require('../business');
-const UpdateCustomerBusiness = require('../business/UpdateCustomerBusiness');
+
 
 // Controller somente faz as chamadas para o business e retorna um valor
 module.exports = () => ({
@@ -47,14 +48,8 @@ module.exports = () => ({
   update: (req, res) => {
     try {
       const { id } = req.params;
-      const { name, cpf, city, phone } = req.body;
 
-      const editedCustomer = UpdateCustomerBusiness().execute(id, {
-        name,
-        cpf,
-        city,
-        phone,
-      });
+      const editedCustomer = UpdateCustomerBusiness().execute(id, req.body);
 
       res.status(200).json(editedCustomer);
     } catch (error) {
