@@ -6,6 +6,8 @@ const { randomUUID } = require('node:crypto');
 let customers = [];
 let initialId = 0;
 class CustomerRepository {
+  // _customers = []
+
   create(data) {
     const customer = {
       _UUID: randomUUID(), // Gera um "RFC 4122" versão 4 "UUID" aleatório
@@ -17,6 +19,7 @@ class CustomerRepository {
 
     customers.push(customer);
 
+    // return this._customer;
     return customer;
   }
 

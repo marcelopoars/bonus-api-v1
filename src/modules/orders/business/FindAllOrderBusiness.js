@@ -1,3 +1,11 @@
+// Regras de negócio para criar um cliente (validações)
+// validações
+// formatações
+
+const { FindAllOrderService } = require('../services');
+
 module.exports = () => ({
-    execute: () => {}
-})
+  execute: () => {
+    return FindAllOrderService().execute();
+  },
+});

@@ -3,10 +3,11 @@
 // https://nodejs.org/api/crypto.html#crypto
 const { randomUUID } = require('node:crypto');
 
+let orders = []
 let initialId = 0;
 
 class OrderRepository {
-  _orders = [];
+  // _orders = [];
 
   create(customerIndex, customers, data) {
     const order = {
@@ -20,9 +21,13 @@ class OrderRepository {
     customers[customerIndex].cashback = data.cashbackByOrder;
     customers[customerIndex].updatedAt = new Date();
 
-    this._orders.push(order);
+    orders.push(order);
 
     return order;
+  }
+
+  findAll() {
+    return orders;
   }
 }
 

@@ -1,3 +1,5 @@
+// Controller somente faz as chamadas para o business e retorna um valor
+
 const {
   CreateCustomerBusiness,
   FindAllCustomerBusiness,
@@ -6,7 +8,6 @@ const {
   DeleteCustomerBusiness,
 } = require('../business');
 
-// Controller somente faz as chamadas para o business e retorna um valor
 module.exports = () => ({
   create: (req, res) => {
     try {

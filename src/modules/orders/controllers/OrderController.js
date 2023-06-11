@@ -1,4 +1,9 @@
-const CreateOrderBusiness = require('../business/CreateOrderBusiness');
+// Controller somente faz as chamadas para o business e retorna um valor
+
+const {
+  CreateOrderBusiness,
+  FindAllOrderBusiness,
+} = require('../business');
 
 module.exports = () => ({
   create: (req, res) => {
@@ -13,9 +18,11 @@ module.exports = () => ({
     }
   },
 
-  findAll: (req, res) => {
+  findAll: (_, res) => {
     try {
-      res.json({ message: 'GET ALL ORDERS......' });
+      const orders = FindAllOrderBusiness().execute();
+
+      res.json(orders);
     } catch (error) {
       res.status(error.status || 500).json({
         message: error.message,
