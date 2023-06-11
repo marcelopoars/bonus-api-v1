@@ -28,7 +28,9 @@ class CustomerRepository {
   }
 
   findOne(id) {
-    return customers.find(customer => customer._id === id);
+    const customer = customers.find(customer => customer._id === id);
+
+    return customer;
   }
 
   update(id, data) {

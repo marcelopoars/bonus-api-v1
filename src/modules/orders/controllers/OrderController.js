@@ -3,6 +3,7 @@
 const {
   CreateOrderBusiness,
   FindAllOrderBusiness,
+  FindOneOrderBusiness,
 } = require('../business');
 
 module.exports = () => ({
@@ -32,11 +33,31 @@ module.exports = () => ({
 
   findOne: (req, res) => {
     try {
-      res.json({ message: 'GET ORDER BY ID......' });
+      const { id } = req.params;
+
+      const order = FindOneOrderBusiness().execute(id);
+
+      res.json(order);
     } catch (error) {
       res.status(error.status || 500).json({
         message: error.message,
       });
     }
+  },
+
+  update: (req, res) => {
+    try {
+      const { id } = req.params;
+
+      res.json({ updatedOrder: id });
+    } catch (error) {}
+  },
+
+  delete: (req, res) => {
+    try {
+      const { id } = req.params;
+
+      res.json({ deletedOrder: id });
+    } catch (error) {}
   },
 });

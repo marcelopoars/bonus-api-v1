@@ -3,7 +3,7 @@
 // https://nodejs.org/api/crypto.html#crypto
 const { randomUUID } = require('node:crypto');
 
-let orders = []
+let orders = [];
 let initialId = 0;
 
 class OrderRepository {
@@ -28,6 +28,12 @@ class OrderRepository {
 
   findAll() {
     return orders;
+  }
+
+  findOne(id) {
+    const order = orders.find(order => order._id === id);
+
+    return order;
   }
 }
 

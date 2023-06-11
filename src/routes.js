@@ -16,5 +16,7 @@ routes.delete('/customers/:id', CustomerController().delete);
 routes.post('/orders', OrderController().create);
 routes.get('/orders', OrderController().findAll);
 routes.get('/orders/:id', OrderController().findOne);
+routes.put('/orders/:id', OrderController().update);
+routes.delete('/orders/:id', OrderController().delete);
 
 module.exports = routes;
