@@ -10,4 +10,4 @@ function validateOnCreateCustomer(name, cpf, city, phone) {
   defaultCustomerValidations(name, cpf, city, phone);
 }
 
-module.exports = validateOnCreateCustomer;
+// module.exports = validateOnCreateCustomer;

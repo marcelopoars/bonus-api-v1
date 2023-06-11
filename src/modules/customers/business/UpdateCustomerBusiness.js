@@ -1,8 +1,7 @@
 // Regras de negócio para criar um cliente (validações)
 // validações
 // formatações
-
-const validateOnEditCustomer = require('../validations/validateOnEditCustomer');
+const { validateOnEditCustomer } = require('../validations');
 const {
   FindOneCustomerService,
   UpdateCustomerService,

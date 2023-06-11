@@ -7,4 +7,4 @@ function validateOnEditCustomer(id, name, cpf, city, phone) {
   defaultCustomerValidations(name, cpf, city, phone);
 }
 
-module.exports = validateOnEditCustomer;
+// module.exports = validateOnEditCustomer;

@@ -1,15 +1,11 @@
-const { getCustomerBashback } = require('../../utils');
+const { validateType } = require('../../commons/validations');
 
-const validateType = require('../commons/validateType');
-
-function validateOnCreateOrder(customerId, amount) {
+function validateOnCreateOrder(customerId, amount, customerBashback) {
   if (!customerId || !amount)
     throw {
       status: 400,
       message: 'All fields are required',
     };
-
-  const customerBashback = getCustomerBashback(customerId);
 
   if (customerBashback > amount)
     throw {
@@ -24,8 +20,8 @@ function validateOnCreateOrder(customerId, amount) {
       message: 'Amount must be greater than zero',
     };
 
-  validateType({ value: customerId, name: 'customerId', type: 'number' });
+  // validateType({ value: customerId, name: 'customerId' });
   validateType({ value: amount, name: 'amount', type: 'number' });
 }
 
-// module.exports = validateOnCreateOrder;
+module.exports = validateOnCreateOrder;

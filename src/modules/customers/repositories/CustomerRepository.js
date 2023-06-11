@@ -1,21 +1,20 @@
+// Salva os dados independente do lugar ou tecnolia (banco de dados, arquivo, in memory, etc)
+
+// https://nodejs.org/api/crypto.html#crypto
 const { randomUUID } = require('node:crypto');
 
-// Salva os dados independente do lugar ou tecnolia (banco de dados, arquivo, in memory, etc)
 let customers = [];
-let initialCustomerId = 0;
+let initialId = 0;
 class CustomerRepository {
-  //   _customers = [];
-
   create(data) {
     const customer = {
       _UUID: randomUUID(), // Gera um "RFC 4122" versão 4 "UUID" aleatório
-      _id: (initialCustomerId += 1).toString(),
+      _id: (initialId += 1).toString(),
       ...data,
       createdAt: new Date(),
       updatedAt: new Date(),
     };
 
-    // this._customers.push(customer);
     customers.push(customer);
 
     return customer;

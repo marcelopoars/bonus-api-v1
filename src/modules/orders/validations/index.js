@@ -1,5 +1,3 @@
 const validateOnCreateOrder = require('./validateOnCreateOrder');
 
-module.exports = {
-  validateOnCreateOrder,
-};
+module.exports = { validateOnCreateOrder };

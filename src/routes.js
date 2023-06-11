@@ -1,14 +1,20 @@
 const Router = require('express');
 
-const customerController =
-  require('./modules/customers/controllers/CustomerController')();
+const CustomerController = require('./modules/customers/controllers');
+const OrderController = require('./modules/orders/controllers/OrderController');
 
 const routes = Router();
 
-routes.post('/customers', customerController.create);
-routes.get('/customers', customerController.findAll);
-routes.get('/customers/:id', customerController.findOne);
-routes.put('/customers/:id', customerController.update);
-routes.delete('/customers/:id', customerController.delete);
+// Customer
+routes.post('/customers', CustomerController().create);
+routes.get('/customers', CustomerController().findAll);
+routes.get('/customers/:id', CustomerController().findOne);
+routes.put('/customers/:id', CustomerController().update);
+routes.delete('/customers/:id', CustomerController().delete);
+
+// Order
+routes.post('/orders', OrderController().create);
+routes.get('/orders', OrderController().findAll);
+routes.get('/orders/:id', OrderController().findOne);
 
 module.exports = routes;
