@@ -1,7 +1,7 @@
-function calculateAmountByOrder(amount, currentCustomerBashback) {
-  return currentCustomerBashback === 0
+function calculateAmountByOrder(amount, currentCustomerCashback) {
+  return currentCustomerCashback === 0
     ? amount
-    : Number((amount - currentCustomerBashback).toFixed(2));
+    : Number((amount - currentCustomerCashback).toFixed(2));
 }
 
 module.exports = calculateAmountByOrder;

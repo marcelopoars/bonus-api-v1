@@ -16,13 +16,13 @@ module.exports = () => ({
 
     if (!customer) throw { status: 404, message: 'Customer not found' };
 
-    const currentCustomerBashback = customer.cashback;
+    const currentCustomerCashback = customer.cashback;
 
-    validateOnCreateOrder(customerId, amount, currentCustomerBashback);
+    validateOnCreateOrder(customerId, amount, currentCustomerCashback);
 
     const amountByOrder = calculateAmountByOrder(
       amount,
-      currentCustomerBashback,
+      currentCustomerCashback,
     );
 
     const cashbackByOrder = calculateCashback(amountByOrder);
