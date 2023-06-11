@@ -1,7 +1,7 @@
 const Router = require('express');
 
-const CustomerController = require('./modules/customers/controllers');
-const OrderController = require('./modules/orders/controllers/OrderController');
+const { CustomerController } = require('../customers/controllers');
+const { OrderController } = require('../orders/controllers');
 
 const routes = Router();
 
