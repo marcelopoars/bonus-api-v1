@@ -1,19 +1,19 @@
 {
     "client": "Thunder Client",
-    "collectionName": "Bonus API - v1",
-    "dateExported": "2023-06-03T22:42:58.506Z",
+    "collectionName": "Cashback API",
+    "dateExported": "2023-06-11T17:57:53.391Z",
     "version": "1.1",
     "folders": [
         {
             "_id": "0823cd92-3585-4489-a925-664b57e46a25",
-            "name": "Customers",
+            "name": "Customer",
             "containerId": "",
             "created": "2023-05-25T23:07:15.685Z",
             "sortNum": 10000
         },
         {
             "_id": "9b49a661-92fc-44af-b0bd-3be22d844ed6",
-            "name": "Orders",
+            "name": "Order",
             "containerId": "",
             "created": "2023-05-25T23:07:25.284Z",
             "sortNum": 20000
@@ -21,34 +21,20 @@
     ],
     "requests": [
         {
-            "_id": "bd587dd0-c1b8-4b60-b2be-40480fe35e7d",
-            "colId": "85f257d9-4747-4dfa-a658-de2d9fb9d7d5",
-            "containerId": "0823cd92-3585-4489-a925-664b57e46a25",
-            "name": "Route not found",
-            "url": "http://localhost:3000/123",
-            "method": "GET",
-            "sortNum": 5000,
-            "created": "2023-06-02T02:45:56.738Z",
-            "modified": "2023-06-02T02:50:29.318Z",
-            "headers": [],
-            "params": [],
-            "tests": []
-        },
-        {
             "_id": "ad6799b3-9624-47c1-bdce-a25a374e6785",
             "colId": "85f257d9-4747-4dfa-a658-de2d9fb9d7d5",
             "containerId": "0823cd92-3585-4489-a925-664b57e46a25",
-            "name": "Create Customer",
+            "name": "create",
             "url": "http://localhost:3000/customers",
             "method": "POST",
             "sortNum": 10000,
             "created": "2023-05-24T22:56:22.760Z",
-            "modified": "2023-06-01T23:30:53.045Z",
+            "modified": "2023-06-11T14:45:57.838Z",
             "headers": [],
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"name\": \"Pedrinho\",\n  \"cpf\": \"999.999.999-99\",\n  \"city\": \"POA\",\n  \"phone\": \"51-99999-9999\"\n}",
+                "raw": "{\n  \"name\": \"Ana Maria\",\n  \"cpf\": \"999.999.999-99\",\n  \"city\":\"Porto Alegre\",\n  \"phone\": \"(99)99999-9999\"\n}",
                 "form": []
             },
             "tests": []
@@ -57,26 +43,40 @@
             "_id": "f733c559-3ea4-4d18-8cbb-a5537679c789",
             "colId": "85f257d9-4747-4dfa-a658-de2d9fb9d7d5",
             "containerId": "9b49a661-92fc-44af-b0bd-3be22d844ed6",
-            "name": "Create Order",
+            "name": "create",
             "url": "http://localhost:3000/orders",
             "method": "POST",
             "sortNum": 10000,
             "created": "2023-05-25T23:09:02.398Z",
-            "modified": "2023-06-02T02:40:45.460Z",
+            "modified": "2023-06-11T17:48:30.783Z",
             "headers": [],
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"customerId\": 1,\n  \"amount\": 500\n}",
+                "raw": "{\n  \"customerId\": \"2\",\n  \"amount\": 1000\n}",
                 "form": []
             },
+            "tests": []
+        },
+        {
+            "_id": "bd587dd0-c1b8-4b60-b2be-40480fe35e7d",
+            "colId": "85f257d9-4747-4dfa-a658-de2d9fb9d7d5",
+            "containerId": "",
+            "name": "Index route",
+            "url": "http://localhost:3000",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2023-06-02T02:45:56.738Z",
+            "modified": "2023-06-11T16:31:47.941Z",
+            "headers": [],
+            "params": [],
             "tests": []
         },
         {
             "_id": "0350df59-2b3e-4633-b5bb-f1bbbad73b5c",
             "colId": "85f257d9-4747-4dfa-a658-de2d9fb9d7d5",
             "containerId": "0823cd92-3585-4489-a925-664b57e46a25",
-            "name": "Get All Customers",
+            "name": "findAll",
             "url": "http://localhost:3000/customers",
             "method": "GET",
             "sortNum": 20000,
@@ -90,7 +90,7 @@
             "_id": "c19be47a-2937-4b9a-9865-6dd36b08e4be",
             "colId": "85f257d9-4747-4dfa-a658-de2d9fb9d7d5",
             "containerId": "9b49a661-92fc-44af-b0bd-3be22d844ed6",
-            "name": "Get All Orders",
+            "name": "findAll",
             "url": "http://localhost:3000/orders",
             "method": "GET",
             "sortNum": 20000,
@@ -101,15 +101,29 @@
             "tests": []
         },
         {
+            "_id": "deab0742-387a-4d13-8689-6f3529b7873e",
+            "colId": "85f257d9-4747-4dfa-a658-de2d9fb9d7d5",
+            "containerId": "",
+            "name": "Route not found",
+            "url": "http://localhost:3000/123",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2023-06-11T16:31:38.633Z",
+            "modified": "2023-06-11T16:31:38.633Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
             "_id": "be2e2680-cf6f-4d53-9554-9d4690d35074",
             "colId": "85f257d9-4747-4dfa-a658-de2d9fb9d7d5",
             "containerId": "9b49a661-92fc-44af-b0bd-3be22d844ed6",
-            "name": "Get Order By ID",
+            "name": "findOne",
             "url": "http://localhost:3000/orders/1",
             "method": "GET",
             "sortNum": 30000,
             "created": "2023-05-25T23:12:32.122Z",
-            "modified": "2023-06-02T17:32:03.505Z",
+            "modified": "2023-06-11T17:45:54.596Z",
             "headers": [],
             "params": [],
             "tests": []
@@ -118,12 +132,26 @@
             "_id": "98e05f83-4b1c-4e7d-a8d0-f4a4a29db32b",
             "colId": "85f257d9-4747-4dfa-a658-de2d9fb9d7d5",
             "containerId": "0823cd92-3585-4489-a925-664b57e46a25",
-            "name": "Get Customer By ID",
+            "name": "findOne",
             "url": "http://localhost:3000/customers/1",
             "method": "GET",
             "sortNum": 40000,
             "created": "2023-05-24T22:55:26.652Z",
-            "modified": "2023-06-02T01:14:18.081Z",
+            "modified": "2023-06-11T17:43:25.682Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "5271d0b9-d0ea-4aad-804d-178f00c90fe4",
+            "colId": "85f257d9-4747-4dfa-a658-de2d9fb9d7d5",
+            "containerId": "9b49a661-92fc-44af-b0bd-3be22d844ed6",
+            "name": "update",
+            "url": "http://localhost:3000/orders/1",
+            "method": "PUT",
+            "sortNum": 40000,
+            "created": "2023-06-11T15:28:56.615Z",
+            "modified": "2023-06-11T15:31:10.620Z",
             "headers": [],
             "params": [],
             "tests": []
@@ -132,17 +160,17 @@
             "_id": "ac61088f-a1a3-4f08-9941-3000bd811f69",
             "colId": "85f257d9-4747-4dfa-a658-de2d9fb9d7d5",
             "containerId": "0823cd92-3585-4489-a925-664b57e46a25",
-            "name": "Edit Customer By ID",
+            "name": "update",
             "url": "http://localhost:3000/customers/1",
             "method": "PUT",
             "sortNum": 45000,
             "created": "2023-05-24T23:02:28.916Z",
-            "modified": "2023-06-01T23:44:43.950Z",
+            "modified": "2023-06-11T17:45:08.584Z",
             "headers": [],
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"city\": \"Canoas...........\"\n}",
+                "raw": "{\n  \"name\": \"Marcelo Pereira\",\n  \"cpf\": \"999.999.999-99\"\n}",
                 "form": []
             },
             "tests": []
@@ -151,15 +179,36 @@
             "_id": "32446c96-bac2-4575-9b15-6b2b8ecb968b",
             "colId": "85f257d9-4747-4dfa-a658-de2d9fb9d7d5",
             "containerId": "0823cd92-3585-4489-a925-664b57e46a25",
-            "name": "Delete Customer By ID",
-            "url": "http://localhost:3000/customers/1",
+            "name": "delete",
+            "url": "http://localhost:3000/customers/2",
             "method": "DELETE",
             "sortNum": 50000,
             "created": "2023-05-24T23:05:47.193Z",
-            "modified": "2023-06-02T01:14:32.840Z",
+            "modified": "2023-06-11T17:46:40.721Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "fd8305ab-ad8c-4ae8-8fdb-a800f9803d3f",
+            "colId": "85f257d9-4747-4dfa-a658-de2d9fb9d7d5",
+            "containerId": "9b49a661-92fc-44af-b0bd-3be22d844ed6",
+            "name": "delete",
+            "url": "http://localhost:3000/orders/1",
+            "method": "DELETE",
+            "sortNum": 50000,
+            "created": "2023-06-11T15:31:25.635Z",
+            "modified": "2023-06-11T17:47:06.572Z",
             "headers": [],
             "params": [],
             "tests": []
         }
-    ]
+    ],
+    "settings": {
+        "runOptions": {
+            "delay": 1,
+            "iterations": 1,
+            "dataFilePath": ""
+        }
+    }
 }
