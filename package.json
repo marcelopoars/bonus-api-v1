@@ -1,6 +1,6 @@
 {
   "name": "cashback-api-in-memory",
-  "version": "1.9.1",
+  "version": "1.9.2",
   "description": "Projeto desenvolvido na disciplina de Desenvolvimento de Serviços e APIs do curso de Análise e Desenvolvimento de Sistemas - Faculdade UniSenac - SENAC-RS.",
   "main": "app.js",
   "scripts": {
