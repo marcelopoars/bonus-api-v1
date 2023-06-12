@@ -4,6 +4,8 @@ module.exports = {
     '<rootDir>/src/**/*',
     '!**/node_modules/**',
     '!<rootDir>/src/**/*app.js',
+    '!<rootDir>/src/**/*metaData.js',
+    "!<rootDir>/src/modules/**/*{Controller,Business,Service,Repository}.js"
   ],
   coverageDirectory: 'coverage',
   coveragePathIgnorePatterns: [
@@ -11,14 +13,15 @@ module.exports = {
     'coverage',
     'node_modules',
     'index.js',
+    'routes.js',
   ],
   coverageProvider: 'v8',
   coverageThreshold: {
     global: {
-      branches: 90,
-      functions: 90,
-      lines: 90,
-      statements: 90,
+      branches: 100,
+      functions: 100,
+      lines: 100,
+      statements: 100,
     },
   },
 

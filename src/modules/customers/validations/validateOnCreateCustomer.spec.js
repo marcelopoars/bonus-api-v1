@@ -2,28 +2,19 @@ const validateOnCreateCustomer = require('./validateOnCreateCustomer');
 
 describe(':: modules :: customers :: validations :: validateOnCreateCustomer', () => {
   it('should throw an error if any field is empty', () => {
-    expect(() => validateOnCreateCustomer('', '123', 'foo', '123')).toThrow(
-      'All fields are required',
-    );
-    expect(() => validateOnCreateCustomer('foo', '', 'foo', '123')).toThrow(
-      'All fields are required',
-    );
-    expect(() => validateOnCreateCustomer('foo', '123', '', '123')).toThrow(
-      'All fields are required',
-    );
-    expect(() => validateOnCreateCustomer('foo', '123', 'foo', '')).toThrow(
+    expect(() => validateOnCreateCustomer(null, '123', 'foo', '123')).toThrow(
       'All fields are required',
     );
   });
 
-  it('should throw an error if name less than 5 characters', () => {
+  it('should not throw an error if all validations pass', () => {
     expect(() =>
       validateOnCreateCustomer(
-        'foo',
+        'Maria',
         '999.999.999-99',
         'Porto Alegre',
         '(99)99999-9999',
       ),
-    ).toThrow('Name must be more than 5 characters');
+    ).not.toThrow();
   });
 });

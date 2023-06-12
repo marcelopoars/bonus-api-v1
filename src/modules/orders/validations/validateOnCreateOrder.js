@@ -1,7 +1,7 @@
 const { validateType } = require('../../commons/validations');
 
 function validateOnCreateOrder(customerId, amount, customerBashback) {
-  if (!customerId || !amount)
+  if (!customerId || (!amount && amount !== 0))
     throw {
       status: 400,
       message: 'All fields are required',
@@ -20,8 +20,8 @@ function validateOnCreateOrder(customerId, amount, customerBashback) {
       cashback: customerBashback,
     };
 
-  validateType({ value: customerId, name: 'customerId' });
-  validateType({ value: amount, name: 'amount', type: 'number' });
+  validateType({ value: customerId, fieldName: 'customerId' });
+  validateType({ value: amount, fieldName: 'amount', type: 'number' });
 }
 
 module.exports = validateOnCreateOrder;

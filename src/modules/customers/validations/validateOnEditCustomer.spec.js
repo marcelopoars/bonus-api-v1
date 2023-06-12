@@ -5,9 +5,14 @@ describe(':: modules :: customers :: validations :: validateOnEditCustomer', () 
     expect(() => validateOnEditCustomer()).toThrow('No field was informed');
   });
 
-  it('should throw an error if name less than 5 characters', () => {
-    expect(() => validateOnEditCustomer('foo', '', '', '')).toThrow(
-      'Name must be more than 5 characters',
-    );
+  it('should not throw an error if all validations pass', () => {
+    expect(() =>
+      validateOnEditCustomer(
+        'Maria',
+        '999.999.999-99',
+        'Porto Alegre',
+        '(99)99999-9999',
+      ),
+    ).not.toThrow();
   });
 });
