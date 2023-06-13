@@ -5,6 +5,7 @@ module.exports = {
     '!**/node_modules/**',
     '!<rootDir>/src/**/*app.js',
     '!<rootDir>/src/**/*metaData.js',
+    '!<rootDir>/src/**/*swagger.json',
     "!<rootDir>/src/modules/**/*{Controller,Business,Service,Repository}.js"
   ],
   coverageDirectory: 'coverage',
