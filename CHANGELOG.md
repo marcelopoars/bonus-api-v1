@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.9.3] - 2023-06-11 - MvJsmC9M
 
+### Changed
+
+- Refactor on modules
+
+## [1.9.3] - 2023-06-11 - MvJsmC9M
+
 ### Added
 
 - Create unit tests on validation functions
