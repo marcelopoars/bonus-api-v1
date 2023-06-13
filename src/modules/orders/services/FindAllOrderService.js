@@ -1,4 +1,5 @@
-// O service serve para fazer integração com outras APIs ou o banco de dados
+// O service faz integração com outras APIs ou o bancos de dados
+
 const OrderRepository = require('../repositories/OrderRepository');
 
 const orderRepository = new OrderRepository();

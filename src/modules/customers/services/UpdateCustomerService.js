@@ -1,9 +1,9 @@
-const CustomerRepository = require('../repositories/CustomerRepository');
+// O service faz integração com outras APIs ou o bancos de dados
 
-const customerRepository = new CustomerRepository();
+const CustomerRepository = require('../repositories/CustomerRepository');
 
 module.exports = () => ({
   execute: (id, { name, cpf, city, phone }) => {
-    return customerRepository.update(id, { name, cpf, city, phone });
+    return new CustomerRepository().update(id, { name, cpf, city, phone });
   },
 });

@@ -1,11 +1,9 @@
-// O service serve para fazer integração com outras APIs ou o banco de dados
+// O service faz integração com outras APIs ou o bancos de dados
 
 const CustomerRepository = require('../repositories/CustomerRepository');
 
-const customerRepository = new CustomerRepository();
-
 module.exports = () => ({
   execute: id => {
-    return customerRepository.findOne(id);
+    return new CustomerRepository().findOne(id);
   },
 });

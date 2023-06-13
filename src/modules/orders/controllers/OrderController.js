@@ -1,4 +1,4 @@
-// Controller somente faz as chamadas para o business e retorna um valor
+// Faz a chamada para o Busines e retrorna o valor
 
 const {
   CreateOrderBusiness,
@@ -23,7 +23,7 @@ module.exports = () => ({
     try {
       const orders = FindAllOrderBusiness().execute();
 
-      res.json(orders);
+      res.status(200).json(orders);
     } catch (error) {
       res.status(error.status || 500).json({
         message: error.message,
@@ -37,7 +37,7 @@ module.exports = () => ({
 
       const order = FindOneOrderBusiness().execute(id);
 
-      res.json(order);
+      res.status(200).json(order);
     } catch (error) {
       res.status(error.status || 500).json({
         message: error.message,
@@ -49,7 +49,7 @@ module.exports = () => ({
     try {
       const { id } = req.params;
 
-      res.json({ updatedOrder: id });
+      res.status(200).json({ updatedOrder: id });
     } catch (error) {}
   },
 
@@ -57,7 +57,7 @@ module.exports = () => ({
     try {
       const { id } = req.params;
 
-      res.json({ deletedOrder: id });
+      res.status(200).json({ deletedOrder: id });
     } catch (error) {}
   },
 });

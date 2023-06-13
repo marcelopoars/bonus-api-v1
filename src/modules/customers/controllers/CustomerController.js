@@ -1,4 +1,4 @@
-// Controller somente faz as chamadas para o business e retorna um valor
+// Faz a chamada para o Busines e retrorna o valor
 
 const {
   CreateCustomerBusiness,
@@ -12,7 +12,6 @@ module.exports = () => ({
   create: (req, res) => {
     try {
       const customer = CreateCustomerBusiness().execute(req.body);
-
       res.status(201).json(customer);
     } catch (error) {
       res.status(error.status || 500).json({
@@ -24,7 +23,7 @@ module.exports = () => ({
   findAll: (_, res) => {
     try {
       const customers = FindAllCustomerBusiness().execute();
-      res.json(customers);
+      res.status(200).json(customers);
     } catch (error) {
       res.status(error.status || 500).json({
         message: error.message,
@@ -35,24 +34,20 @@ module.exports = () => ({
   findOne: (req, res) => {
     try {
       const { id } = req.params;
-
       const customer = FindOneCustomerBusiness().execute(id);
-
-      res.json(customer);
+      res.status(200).json(customer);
     } catch (error) {
       res.status(error.status || 500).json({
         message: error.message,
       });
     }
   },
-
+  
   update: (req, res) => {
     try {
       const { id } = req.params;
-
       const editedCustomer = UpdateCustomerBusiness().execute(id, req.body);
-
-      res.json(editedCustomer);
+      res.status(200).json(editedCustomer);
     } catch (error) {
       res.status(error.status || 500).json({
         message: error.message,
@@ -63,10 +58,8 @@ module.exports = () => ({
   delete: (req, res) => {
     try {
       const { id } = req.params;
-      
-      const deletedCustomer = DeleteCustomerBusiness().execute(id)
-
-      res.json(deletedCustomer);
+      const deletedCustomer = DeleteCustomerBusiness().execute(id);
+      res.status(200).json(deletedCustomer);
     } catch (error) {
       res.status(error.status || 500).json({
         message: error.message,
