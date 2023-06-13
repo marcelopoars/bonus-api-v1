@@ -1,6 +1,5 @@
-// Regras de negócio para criar um cliente (validações)
-// validações
-// formatações
+// Validações de Regras de negócio
+
 const { validateOnEditCustomer } = require('../validations');
 const {
   FindOneCustomerService,
@@ -18,10 +17,10 @@ module.exports = () => ({
     validateOnEditCustomer(name, cpf, city, phone);
 
     return UpdateCustomerService().execute(id, {
-      name: formatString(name),
-      cpf,
-      city: formatString(city),
-      phone,
+      name: !!name ? formatString(name) : customer.name,
+      cpf: cpf || customer.cpf,
+      city: !!city ? formatString(city) : customer.city,
+      phone: phone || customer.phone,
     });
   },
 });

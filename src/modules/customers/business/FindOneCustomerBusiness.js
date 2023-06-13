@@ -1,6 +1,4 @@
-// Regras de negócio para criar um cliente (validações)
-// validações
-// formatações
+// Validações de Regras de negócio
 
 const { FindOneCustomerService } = require('../services');
 
@@ -10,6 +8,6 @@ module.exports = () => ({
 
     if (!customer) throw { status: 404, message: 'Customer not found' };
 
-    return FindOneCustomerService().execute(id);
+    return customer;
   },
 });

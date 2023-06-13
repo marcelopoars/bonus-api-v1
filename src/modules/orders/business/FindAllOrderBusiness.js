@@ -1,6 +1,4 @@
-// Regras de negócio para criar um cliente (validações)
-// validações
-// formatações
+// Validações de Regras de negócio
 
 const { FindAllOrderService } = require('../services');
 

@@ -1,3 +1,5 @@
+// Validações de Regras de negócio
+
 const {
   FindOneCustomerService,
   FindAllCustomerService,
@@ -9,12 +11,14 @@ const { calculateAmountByOrder, calculateCashback } = require('../utils');
 module.exports = () => ({
   execute: ({ customerId, amount }) => {
     const customer = FindOneCustomerService().execute(customerId);
+
+    if (!customer) throw { status: 404, message: 'Customer not found' };
+
     const customers = FindAllCustomerService().execute(customerId);
+
     const customerIndex = customers.findIndex(
       customer => customer._id === customerId,
     );
-
-    if (!customer) throw { status: 404, message: 'Customer not found' };
 
     const currentCustomerCashback = customer.cashback;
 

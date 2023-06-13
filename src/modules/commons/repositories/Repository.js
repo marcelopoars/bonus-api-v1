@@ -1,16 +1,50 @@
 const { randomUUID } = require('node:crypto');
 
-class Repository {
-  _items = [];
+const _instance = Symbol();
+const _singletonEnforcer = Symbol();
 
-  constructor({ items }) {
-    this._items = items;
+class Repository {
+  static _items = {};
+  static _model = null;
+
+  constructor(enforce) {
+    console.log('new instance');
+    if (enforce !== _singletonEnforcer) {
+      throw 'Cannot constructor singleton';
+    }
   }
 
-  create(data) {
-    const item = { _id: randomUUID(), ...data };
-    this._items.push(item);
+  static getInstance(model) {
+    if (!this[_instance]) {
+      this[_instance] = new Repository(_singletonEnforcer);
+    }
+    this._model = model;
+    this._items[model] = this._items[model] || [];
+    return this[_instance];
+  }
+
+  // setModel(model) {
+  //   this._model = model;
+  //   this._items[model] = this._items[model] || [];
+  // }
+
+  static create(data) {
+    const item = {
+      _id: randomUUID(),
+      ...data,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    };
+
+    console.log('items', this._items);
+    console.log('model', this._model);
+
+    this._items[this._model].push(item);
     return item;
+  }
+
+  findAll() {
+    return this._items[this._model];
   }
 }
 
