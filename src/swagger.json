@@ -170,7 +170,7 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "customerId": {
+                  "customer_id": {
                     "description": "Customer Id",
                     "type": "string",
                     "example": "79732fd9-ff71-44d8-b3e8-ffda377b451b"
@@ -181,7 +181,7 @@
                     "example": 100
                   }
                 },
-                "required": ["customerId", "amount"]
+                "required": ["customer_id", "amount"]
               }
             }
           }
@@ -199,7 +199,7 @@
                       "type": "string",
                       "example": "3501159d-4db1-449b-9778-ffe133098dcc"
                     },
-                    "customerId": {
+                    "customer_id": {
                       "description": "Customer Id",
                       "type": "string",
                       "example": "79732fd9-ff71-44d8-b3e8-ffda377b451b"
@@ -259,7 +259,7 @@
                         "type": "string",
                         "example": "3501159d-4db1-449b-9778-ffe133098dcc"
                       },
-                      "customerId": {
+                      "customer_id": {
                         "description": "Customer Id",
                         "type": "string",
                         "example": "79732fd9-ff71-44d8-b3e8-ffda377b451b"
@@ -286,7 +286,6 @@
                       }
                     }
                   }
-                  
                 }
               }
             }

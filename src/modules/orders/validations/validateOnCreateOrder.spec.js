@@ -1,7 +1,7 @@
 const validateOnCreateOrder = require('./validateOnCreateOrder');
 
 describe(':: modules :: orders :: validations :: validateOnCreateOrder', () => {
-  it('should throw an error if customerId or amount is missing', () => {
+  it('should throw an error if customer_id or amount is missing', () => {
     expect(() => validateOnCreateOrder(null, 100, 15)).toThrow(
       'All fields are required',
     );
