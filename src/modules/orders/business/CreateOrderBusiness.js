@@ -11,13 +11,7 @@ module.exports = () => ({
   execute: ({ customer_id, amount }) => {
     const customer = FindOneCustomerService().execute(customer_id);
 
-    if (!customer)
-      throw {
-        status: 404,
-        message: 'Customer not found',
-        file: 'CreateOrderBusiness.js',
-        line: 14,
-      };
+    if (!customer) throw { status: 404, message: 'Customer not found' };
 
     validateOnCreateOrder(customer_id, amount, customer.cashback);
 
