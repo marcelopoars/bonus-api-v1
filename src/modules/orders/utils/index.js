@@ -1,7 +1,3 @@
-const calculateAmountByOrder = require('./calculateAmountByOrder');
-const calculateCashback = require('./calculateCashback');
+const calculateAmountPerOrder = require('./calculateAmountPerOrder');
 
-module.exports = {
-  calculateAmountByOrder,
-  calculateCashback,
-};
+module.exports = { calculateAmountPerOrder };

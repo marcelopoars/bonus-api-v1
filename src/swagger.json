@@ -3,7 +3,7 @@
   "info": {
     "title": "Cashback API",
     "description": "Esta API tem como funcionalidades principais o `cadastro de clientes (Customers)` e o `registro de vendas (Orders)`. A cada veda é gerado um valor de `CASHBACK` para o cliente, que na sua próxima compra, receberá este valor como `desconto`. No momento o percentual de CASHBACK por venda está fixado em `15%`.",
-    "version": "1.9.6"
+    "version": "1.9.8"
   },
   "servers": [
     {
@@ -21,7 +21,7 @@
         "tags": ["customer"],
         "summary": "Create customer",
         "description": "Create customer",
-        "operationId": "createOneCustomer",
+        "operationId": "createCustomer",
         "requestBody": {
           "content": {
             "application/json": {
@@ -119,7 +119,7 @@
         "tags": ["customer"],
         "summary": "Find all customers",
         "description": "Find all customers",
-        "operationId": "findAllOneCustomer",
+        "operationId": "findAllCustomers",
         "responses": {
           "200": {
             "description": "Success",
@@ -163,14 +163,14 @@
         "tags": ["order"],
         "summary": "Create order",
         "description": "Create order",
-        "operationId": "createOneOrder",
+        "operationId": "createOrder",
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
                 "type": "object",
                 "properties": {
-                  "customerId": {
+                  "customer_id": {
                     "description": "Customer Id",
                     "type": "string",
                     "example": "79732fd9-ff71-44d8-b3e8-ffda377b451b"
@@ -181,7 +181,7 @@
                     "example": 100
                   }
                 },
-                "required": ["customerId", "amount"]
+                "required": ["customer_id", "amount"]
               }
             }
           }
@@ -199,7 +199,7 @@
                       "type": "string",
                       "example": "3501159d-4db1-449b-9778-ffe133098dcc"
                     },
-                    "customerId": {
+                    "customer_id": {
                       "description": "Customer Id",
                       "type": "string",
                       "example": "79732fd9-ff71-44d8-b3e8-ffda377b451b"
@@ -209,7 +209,7 @@
                       "type": "number",
                       "example": 100
                     },
-                    "cashbackByOrder": {
+                    "cashback_per_order": {
                       "description": "Cashback by order",
                       "type": "number",
                       "example": 15
@@ -244,7 +244,7 @@
         "tags": ["order"],
         "summary": "Find all orders",
         "description": "Find all orders",
-        "operationId": "createOneOrder",
+        "operationId": "findAllOneOrders",
         "responses": {
           "200": {
             "description": "Success",
@@ -259,7 +259,7 @@
                         "type": "string",
                         "example": "3501159d-4db1-449b-9778-ffe133098dcc"
                       },
-                      "customerId": {
+                      "customer_id": {
                         "description": "Customer Id",
                         "type": "string",
                         "example": "79732fd9-ff71-44d8-b3e8-ffda377b451b"
@@ -269,7 +269,7 @@
                         "type": "number",
                         "example": 100
                       },
-                      "cashbackByOrder": {
+                      "cashback_per_order": {
                         "description": "Cashback by order",
                         "type": "number",
                         "example": 15
@@ -286,7 +286,6 @@
                       }
                     }
                   }
-                  
                 }
               }
             }

@@ -1,5 +1,3 @@
-// Validações de Regras de negócio
-
 const { validateOnEditCustomer } = require('../validations');
 const {
   FindOneCustomerService,

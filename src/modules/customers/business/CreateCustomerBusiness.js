@@ -1,5 +1,3 @@
-// Validações de Regras de negócio
-
 const { CreateCustomerService } = require('../services');
 const { validateOnCreateCustomer } = require('../validations');
 const { formatString } = require('../../commons/utils');

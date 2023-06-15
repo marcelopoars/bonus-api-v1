@@ -1,40 +1,34 @@
-// Validações de Regras de negócio
-
 const {
   FindOneCustomerService,
-  FindAllCustomerService,
+  UpdateCustomerService,
 } = require('../../customers/services');
 const { CreateOrderService } = require('../services');
 const { validateOnCreateOrder } = require('../validations');
-const { calculateAmountByOrder, calculateCashback } = require('../utils');
+const { calculateAmountPerOrder } = require('../utils');
 
 module.exports = () => ({
-  execute: ({ customerId, amount }) => {
-    const customer = FindOneCustomerService().execute(customerId);
+  execute: ({ customer_id, amount }) => {
+    const customer = FindOneCustomerService().execute(customer_id);
 
     if (!customer) throw { status: 404, message: 'Customer not found' };
 
-    const customers = FindAllCustomerService().execute(customerId);
+    validateOnCreateOrder(customer_id, amount, customer.cashback);
 
-    const customerIndex = customers.findIndex(
-      customer => customer._id === customerId,
+    const amount_per_order = calculateAmountPerOrder(amount, customer.cashback);
+
+    const cashback_per_order = Number(
+      (amount_per_order * (15 / 100)).toFixed(2),
     );
 
-    const currentCustomerCashback = customer.cashback;
+    UpdateCustomerService().execute(customer_id, {
+      ...customer,
+      cashback: cashback_per_order,
+    });
 
-    validateOnCreateOrder(customerId, amount, currentCustomerCashback);
-
-    const amountByOrder = calculateAmountByOrder(
-      amount,
-      currentCustomerCashback,
-    );
-
-    const cashbackByOrder = calculateCashback(amountByOrder);
-
-    return CreateOrderService().execute(customerIndex, customers, {
-      customerId,
-      amount: amountByOrder,
-      cashbackByOrder,
+    return CreateOrderService().execute({
+      customer_id,
+      amount_per_order,
+      cashback_per_order,
     });
   },
 });

@@ -1,5 +1,3 @@
-// Faz a chamada para o Busines e retrorna o valor
-
 const {
   CreateCustomerBusiness,
   FindAllCustomerBusiness,

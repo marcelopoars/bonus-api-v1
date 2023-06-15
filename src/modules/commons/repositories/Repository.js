@@ -1,50 +1,72 @@
 const { randomUUID } = require('node:crypto');
 
-const _instance = Symbol();
-const _singletonEnforcer = Symbol();
-
 class Repository {
-  static _items = {};
-  static _model = null;
+  _items = {};
+  _model = '';
 
-  constructor(enforce) {
-    console.log('new instance');
-    if (enforce !== _singletonEnforcer) {
-      throw 'Cannot constructor singleton';
-    }
+  initializeItemsModel() {
+    if (this._model === '') return;
+
+    this._items[this._model] = this._items[this._model] || [];
   }
 
-  static getInstance(model) {
-    if (!this[_instance]) {
-      this[_instance] = new Repository(_singletonEnforcer);
-    }
-    this._model = model;
-    this._items[model] = this._items[model] || [];
-    return this[_instance];
-  }
+  create(data) {
+    this.initializeItemsModel();
 
-  // setModel(model) {
-  //   this._model = model;
-  //   this._items[model] = this._items[model] || [];
-  // }
+    const date = new Date();
 
-  static create(data) {
     const item = {
       _id: randomUUID(),
       ...data,
-      createdAt: new Date(),
-      updatedAt: new Date(),
+      created_at: date,
+      updated_at: date,
     };
 
-    console.log('items', this._items);
-    console.log('model', this._model);
-
     this._items[this._model].push(item);
+
     return item;
   }
 
   findAll() {
-    return this._items[this._model];
+    this.initializeItemsModel();
+
+    return this._model
+      ? this._items[this._model].filter(item => !item.deleted_at)
+      : [];
+  }
+
+  findOne(id) {
+    this.initializeItemsModel();
+
+    return this._items[this._model].find(
+      item => item._id === id && !item.deleted_at,
+    );
+  }
+
+  update(id, data) {
+    this.initializeItemsModel();
+
+    const itemIndex = this._items[this._model].findIndex(
+      item => item._id === id,
+    );
+
+    this._items[this._model][itemIndex] = {
+      ...this._items[this._model][itemIndex],
+      ...data,
+      updated_at: new Date(),
+    };
+
+    return this._items[this._model][itemIndex];
+  }
+
+  delete(id) {
+    this.initializeItemsModel();
+
+    const itemIndex = this._items[this._model].findIndex(
+      item => item._id === id,
+    );
+
+    this._items[this._model][itemIndex].deleted_at = new Date();
   }
 }
 
