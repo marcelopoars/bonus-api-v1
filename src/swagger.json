@@ -21,7 +21,7 @@
         "tags": ["customer"],
         "summary": "Create customer",
         "description": "Create customer",
-        "operationId": "createOneCustomer",
+        "operationId": "createCustomer",
         "requestBody": {
           "content": {
             "application/json": {
@@ -119,7 +119,7 @@
         "tags": ["customer"],
         "summary": "Find all customers",
         "description": "Find all customers",
-        "operationId": "findAllOneCustomer",
+        "operationId": "findAllCustomers",
         "responses": {
           "200": {
             "description": "Success",
@@ -163,7 +163,7 @@
         "tags": ["order"],
         "summary": "Create order",
         "description": "Create order",
-        "operationId": "createOneOrder",
+        "operationId": "createOrder",
         "requestBody": {
           "content": {
             "application/json": {
@@ -209,7 +209,7 @@
                       "type": "number",
                       "example": 100
                     },
-                    "cashbackByOrder": {
+                    "cashback_per_order": {
                       "description": "Cashback by order",
                       "type": "number",
                       "example": 15
@@ -244,7 +244,7 @@
         "tags": ["order"],
         "summary": "Find all orders",
         "description": "Find all orders",
-        "operationId": "createOneOrder",
+        "operationId": "findAllOneOrders",
         "responses": {
           "200": {
             "description": "Success",
@@ -269,7 +269,7 @@
                         "type": "number",
                         "example": 100
                       },
-                      "cashbackByOrder": {
+                      "cashback_per_order": {
                         "description": "Cashback by order",
                         "type": "number",
                         "example": 15

@@ -1,8 +1,7 @@
 const customerRepository = require('../repositories/CustomerRepository');
 
 module.exports = () => ({
-  execute: (data) => {
-    console.log(data);
+  execute: data => {
     return customerRepository.create(data);
   },
 });

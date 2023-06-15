@@ -4,7 +4,7 @@ const {
 } = require('../../customers/services');
 const { CreateOrderService } = require('../services');
 const { validateOnCreateOrder } = require('../validations');
-const { calculateAmountByOrder } = require('../utils');
+const { calculateAmountPerOrder } = require('../utils');
 
 module.exports = () => ({
   execute: ({ customer_id, amount }) => {
@@ -14,7 +14,7 @@ module.exports = () => ({
 
     validateOnCreateOrder(customer_id, amount, customer.cashback);
 
-    const amount_per_order = calculateAmountByOrder(amount, customer.cashback);
+    const amount_per_order = calculateAmountPerOrder(amount, customer.cashback);
 
     const cashback_per_order = Number(
       (amount_per_order * (15 / 100)).toFixed(2),
