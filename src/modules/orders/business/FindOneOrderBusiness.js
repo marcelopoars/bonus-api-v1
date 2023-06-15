@@ -1,5 +1,3 @@
-// Validações de Regras de negócio
-
 const { FindOneOrderService } = require('../services');
 
 module.exports = () => ({

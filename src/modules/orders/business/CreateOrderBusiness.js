@@ -1,4 +1,3 @@
-// Validações de Regras de negócio
 const {
   FindOneCustomerService,
   UpdateCustomerService,
