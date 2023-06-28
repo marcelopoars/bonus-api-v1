@@ -11,7 +11,7 @@ module.exports = () => ({
     const customer = FindOneCustomerService().execute(id);
 
     if (!customer) throw { status: 404, message: 'Customer not found' };
-
+    
     validateOnEditCustomer(name, cpf, city, phone);
 
     return UpdateCustomerService().execute(id, {
