@@ -1,7 +1,7 @@
 {
     "client": "Thunder Client",
-    "collectionName": "Cashback API - Local",
-    "dateExported": "2023-07-03T23:57:40.958Z",
+    "collectionName": "Cashback API - In Memory - Local",
+    "dateExported": "2023-07-04T18:01:18.777Z",
     "version": "1.1",
     "folders": [
         {
@@ -48,12 +48,12 @@
             "method": "POST",
             "sortNum": 10000,
             "created": "2023-05-25T23:09:02.398Z",
-            "modified": "2023-07-03T23:38:06.858Z",
+            "modified": "2023-07-04T17:42:39.471Z",
             "headers": [],
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"customer_id\": \"71d93537-f212-40c6-b249-6e20cccc00bf\",\n  \"total\": 150\n}",
+                "raw": "{\n  \"customer_id\": \"1de87f42-77b1-4ca3-8cb2-abf8acf0d53e\",\n  \"amount\": 100\n}",
                 "form": []
             },
             "tests": []
@@ -119,11 +119,11 @@
             "colId": "85f257d9-4747-4dfa-a658-de2d9fb9d7d5",
             "containerId": "9b49a661-92fc-44af-b0bd-3be22d844ed6",
             "name": "findOne order",
-            "url": "/orders/4cdca422-1eab-43b9-ba93-f53b86e9fb9d",
+            "url": "/orders/1424473a-e280-4e82-92e8-beabc63ba90f",
             "method": "GET",
             "sortNum": 30000,
             "created": "2023-05-25T23:12:32.122Z",
-            "modified": "2023-07-03T23:28:18.936Z",
+            "modified": "2023-07-04T17:45:52.297Z",
             "headers": [],
             "params": [],
             "tests": []
@@ -133,11 +133,11 @@
             "colId": "85f257d9-4747-4dfa-a658-de2d9fb9d7d5",
             "containerId": "0823cd92-3585-4489-a925-664b57e46a25",
             "name": "findOne customer",
-            "url": "/customers/bbcb87bb-9f30-4a46-86bd-d31c53820782",
+            "url": "/customers/1de87f42-77b1-4ca3-8cb2-abf8acf0d53e",
             "method": "GET",
             "sortNum": 40000,
             "created": "2023-05-24T22:55:26.652Z",
-            "modified": "2023-07-02T15:58:00.133Z",
+            "modified": "2023-07-04T17:41:22.917Z",
             "headers": [],
             "params": [],
             "tests": []
@@ -161,16 +161,16 @@
             "colId": "85f257d9-4747-4dfa-a658-de2d9fb9d7d5",
             "containerId": "0823cd92-3585-4489-a925-664b57e46a25",
             "name": "update customer",
-            "url": "/customers/3475b7aa-5400-4c36-87ba-87d999781fbd",
+            "url": "/customers/1de87f42-77b1-4ca3-8cb2-abf8acf0d53e",
             "method": "PUT",
             "sortNum": 45000,
             "created": "2023-05-24T23:02:28.916Z",
-            "modified": "2023-07-02T14:12:00.955Z",
+            "modified": "2023-07-04T17:41:50.839Z",
             "headers": [],
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"name\": \"sohaib mohammed salamma333333333333333\"\n}",
+                "raw": "{\n  \"name\": \"juca silva santos\"\n}",
                 "form": []
             },
             "tests": []

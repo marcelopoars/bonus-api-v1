@@ -1,7 +1,7 @@
 {
     "client": "Thunder Client",
-    "collectionName": "Cashback API - Heroku",
-    "dateExported": "2023-07-03T23:57:52.166Z",
+    "collectionName": "Cashback API - In Memory - Heroku",
+    "dateExported": "2023-07-04T18:00:58.019Z",
     "version": "1.1",
     "folders": [
         {
@@ -48,12 +48,12 @@
             "method": "POST",
             "sortNum": 10000,
             "created": "2023-06-12T17:58:18.340Z",
-            "modified": "2023-07-01T20:00:25.201Z",
+            "modified": "2023-07-04T17:37:54.598Z",
             "headers": [],
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"customerId\": \"d62affe3-7296-4663-a776-\",\n  \"amount\": 100\n}",
+                "raw": "{\n  \"customerId\": \"1f19086c-15bd-4cda-96ad-faa1c099b1c6\",\n  \"amount\": 100\n}",
                 "form": []
             },
             "tests": []
@@ -133,11 +133,11 @@
             "colId": "bc5a7187-3a12-4298-ae7b-57957ed62b7b",
             "containerId": "85832fff-3e5d-4560-98c2-e02d51d86d56",
             "name": "findOne customer",
-            "url": "/customers/fb10f198-a238-42cc-9a3b-4238687e79b2",
+            "url": "/customers/1f19086c-15bd-4cda-96ad-faa1c099b1c6",
             "method": "GET",
             "sortNum": 40000,
             "created": "2023-06-12T17:58:18.346Z",
-            "modified": "2023-06-13T02:19:14.283Z",
+            "modified": "2023-07-04T17:37:31.511Z",
             "headers": [],
             "params": [],
             "tests": []
@@ -206,7 +206,7 @@
     ],
     "settings": {
         "options": {
-            "baseUrl": "https://cashback-api.herokuapp.com"
+            "baseUrl": "https://cashback-api-in-memory-942563d92a91.herokuapp.com"
         },
         "runOptions": {
             "delay": 1,
