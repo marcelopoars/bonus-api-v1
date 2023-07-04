@@ -18,7 +18,7 @@ routes.put('/customers/:id', validateId, customerController.update);
 routes.delete('/customers/:id', validateId, customerController.delete);
 
 // Order
-routes.post('/orders', validateId, orderController.create);
+routes.post('/orders', orderController.create);
 routes.get('/orders', orderController.findAll);
 routes.get('/orders/:id', validateId, orderController.findOne);
 routes.put('/orders/:id', orderController.update);

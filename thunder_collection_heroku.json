@@ -1,217 +1,217 @@
 {
-  "client": "Thunder Client",
-  "collectionName": "Cashback API - Heroku",
-  "dateExported": "2023-06-13T02:03:39.219Z",
-  "version": "1.1",
-  "folders": [
-    {
-      "_id": "85832fff-3e5d-4560-98c2-e02d51d86d56",
-      "name": "Customer",
-      "containerId": "",
-      "created": "2023-06-12T17:58:18.339Z",
-      "sortNum": 10000
-    },
-    {
-      "_id": "818086f6-7c41-4469-b032-f15be3012cf2",
-      "name": "Order",
-      "containerId": "",
-      "created": "2023-06-12T17:58:18.340Z",
-      "sortNum": 20000
+    "client": "Thunder Client",
+    "collectionName": "Cashback API - Heroku",
+    "dateExported": "2023-07-03T23:57:52.166Z",
+    "version": "1.1",
+    "folders": [
+        {
+            "_id": "85832fff-3e5d-4560-98c2-e02d51d86d56",
+            "name": "Customer",
+            "containerId": "",
+            "created": "2023-06-12T17:58:18.339Z",
+            "sortNum": 10000
+        },
+        {
+            "_id": "818086f6-7c41-4469-b032-f15be3012cf2",
+            "name": "Order",
+            "containerId": "",
+            "created": "2023-06-12T17:58:18.340Z",
+            "sortNum": 20000
+        }
+    ],
+    "requests": [
+        {
+            "_id": "aa85ddc2-d5d5-4fc2-8b14-94fc05510d34",
+            "colId": "bc5a7187-3a12-4298-ae7b-57957ed62b7b",
+            "containerId": "85832fff-3e5d-4560-98c2-e02d51d86d56",
+            "name": "create customer",
+            "url": "/customers",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2023-06-12T17:58:18.339Z",
+            "modified": "2023-06-12T18:03:29.055Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\": \"Ana Maria\",\n  \"cpf\": \"999.999.999-99\",\n  \"city\":\"Porto Alegre\",\n  \"phone\": \"(99)99999-9999\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "f00e1612-aab0-4c24-b489-e139cf6be149",
+            "colId": "bc5a7187-3a12-4298-ae7b-57957ed62b7b",
+            "containerId": "818086f6-7c41-4469-b032-f15be3012cf2",
+            "name": "create order",
+            "url": "/orders",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2023-06-12T17:58:18.340Z",
+            "modified": "2023-07-01T20:00:25.201Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"customerId\": \"d62affe3-7296-4663-a776-\",\n  \"amount\": 100\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "7fe8cc51-c649-4950-a95b-e625b75da47b",
+            "colId": "bc5a7187-3a12-4298-ae7b-57957ed62b7b",
+            "containerId": "",
+            "name": "/index",
+            "url": "https://cashback-api.herokuapp.com/",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2023-06-12T17:58:18.341Z",
+            "modified": "2023-06-12T18:13:49.926Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "df1b6010-68dd-445f-ad63-7fc630948931",
+            "colId": "bc5a7187-3a12-4298-ae7b-57957ed62b7b",
+            "containerId": "85832fff-3e5d-4560-98c2-e02d51d86d56",
+            "name": "findAll customers",
+            "url": "/customers",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2023-06-12T17:58:18.342Z",
+            "modified": "2023-06-12T18:03:40.748Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "b047c79f-f7b3-4ccf-a345-cb751f577a29",
+            "colId": "bc5a7187-3a12-4298-ae7b-57957ed62b7b",
+            "containerId": "818086f6-7c41-4469-b032-f15be3012cf2",
+            "name": "findAll orders",
+            "url": "/orders",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2023-06-12T17:58:18.343Z",
+            "modified": "2023-06-12T18:14:42.984Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "c5831822-be79-42ae-9ff3-bdda741a4c4a",
+            "colId": "bc5a7187-3a12-4298-ae7b-57957ed62b7b",
+            "containerId": "",
+            "name": "/404",
+            "url": "https://cashback-api.herokuapp.com/foo",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2023-06-12T17:58:18.344Z",
+            "modified": "2023-06-12T18:00:14.512Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "654833f5-daf8-401f-8455-3da81265724e",
+            "colId": "bc5a7187-3a12-4298-ae7b-57957ed62b7b",
+            "containerId": "818086f6-7c41-4469-b032-f15be3012cf2",
+            "name": "findOne order",
+            "url": "/orders/1",
+            "method": "GET",
+            "sortNum": 30000,
+            "created": "2023-06-12T17:58:18.345Z",
+            "modified": "2023-06-12T18:15:01.411Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "2540ff66-4e01-4f33-b67a-52e2779f4dca",
+            "colId": "bc5a7187-3a12-4298-ae7b-57957ed62b7b",
+            "containerId": "85832fff-3e5d-4560-98c2-e02d51d86d56",
+            "name": "findOne customer",
+            "url": "/customers/fb10f198-a238-42cc-9a3b-4238687e79b2",
+            "method": "GET",
+            "sortNum": 40000,
+            "created": "2023-06-12T17:58:18.346Z",
+            "modified": "2023-06-13T02:19:14.283Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "5dea0572-b26a-4443-9a99-853b794f0136",
+            "colId": "bc5a7187-3a12-4298-ae7b-57957ed62b7b",
+            "containerId": "818086f6-7c41-4469-b032-f15be3012cf2",
+            "name": "update order",
+            "url": "/orders/1",
+            "method": "PUT",
+            "sortNum": 40000,
+            "created": "2023-06-12T17:58:18.347Z",
+            "modified": "2023-06-12T18:15:19.170Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "21aef8a6-23dd-43c9-bc73-9dd82212abec",
+            "colId": "bc5a7187-3a12-4298-ae7b-57957ed62b7b",
+            "containerId": "85832fff-3e5d-4560-98c2-e02d51d86d56",
+            "name": "update customer",
+            "url": "/customers/1",
+            "method": "PUT",
+            "sortNum": 45000,
+            "created": "2023-06-12T17:58:18.348Z",
+            "modified": "2023-06-12T18:09:01.986Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\": \"João Silva\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "ebc6466c-47c2-423d-855a-745933ddb030",
+            "colId": "bc5a7187-3a12-4298-ae7b-57957ed62b7b",
+            "containerId": "85832fff-3e5d-4560-98c2-e02d51d86d56",
+            "name": "delete customer",
+            "url": "/customers/1",
+            "method": "DELETE",
+            "sortNum": 50000,
+            "created": "2023-06-12T17:58:18.349Z",
+            "modified": "2023-06-12T18:11:09.603Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "841d182b-bcb1-4382-8b6c-7d3065d4b716",
+            "colId": "bc5a7187-3a12-4298-ae7b-57957ed62b7b",
+            "containerId": "818086f6-7c41-4469-b032-f15be3012cf2",
+            "name": "delete order",
+            "url": "/orders/1",
+            "method": "DELETE",
+            "sortNum": 50000,
+            "created": "2023-06-12T17:58:18.350Z",
+            "modified": "2023-06-12T18:15:34.891Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        }
+    ],
+    "settings": {
+        "options": {
+            "baseUrl": "https://cashback-api.herokuapp.com"
+        },
+        "runOptions": {
+            "delay": 1,
+            "iterations": 1,
+            "dataFilePath": ""
+        }
     }
-  ],
-  "requests": [
-    {
-      "_id": "aa85ddc2-d5d5-4fc2-8b14-94fc05510d34",
-      "colId": "bc5a7187-3a12-4298-ae7b-57957ed62b7b",
-      "containerId": "85832fff-3e5d-4560-98c2-e02d51d86d56",
-      "name": "create customer",
-      "url": "/customers",
-      "method": "POST",
-      "sortNum": 10000,
-      "created": "2023-06-12T17:58:18.339Z",
-      "modified": "2023-06-12T18:03:29.055Z",
-      "headers": [],
-      "params": [],
-      "body": {
-        "type": "json",
-        "raw": "{\n  \"name\": \"Ana Maria\",\n  \"cpf\": \"999.999.999-99\",\n  \"city\":\"Porto Alegre\",\n  \"phone\": \"(99)99999-9999\"\n}",
-        "form": []
-      },
-      "tests": []
-    },
-    {
-      "_id": "f00e1612-aab0-4c24-b489-e139cf6be149",
-      "colId": "bc5a7187-3a12-4298-ae7b-57957ed62b7b",
-      "containerId": "818086f6-7c41-4469-b032-f15be3012cf2",
-      "name": "create order",
-      "url": "/orders",
-      "method": "POST",
-      "sortNum": 10000,
-      "created": "2023-06-12T17:58:18.340Z",
-      "modified": "2023-06-12T18:19:08.381Z",
-      "headers": [],
-      "params": [],
-      "body": {
-        "type": "json",
-        "raw": "{\n  \"customer_id\": \"1\",\n  \"amount\": 100\n}",
-        "form": []
-      },
-      "tests": []
-    },
-    {
-      "_id": "7fe8cc51-c649-4950-a95b-e625b75da47b",
-      "colId": "bc5a7187-3a12-4298-ae7b-57957ed62b7b",
-      "containerId": "",
-      "name": "/index",
-      "url": "https://cashback-api.herokuapp.com/",
-      "method": "GET",
-      "sortNum": 20000,
-      "created": "2023-06-12T17:58:18.341Z",
-      "modified": "2023-06-12T18:13:49.926Z",
-      "headers": [],
-      "params": [],
-      "tests": []
-    },
-    {
-      "_id": "df1b6010-68dd-445f-ad63-7fc630948931",
-      "colId": "bc5a7187-3a12-4298-ae7b-57957ed62b7b",
-      "containerId": "85832fff-3e5d-4560-98c2-e02d51d86d56",
-      "name": "findAll customers",
-      "url": "/customers",
-      "method": "GET",
-      "sortNum": 20000,
-      "created": "2023-06-12T17:58:18.342Z",
-      "modified": "2023-06-12T18:03:40.748Z",
-      "headers": [],
-      "params": [],
-      "tests": []
-    },
-    {
-      "_id": "b047c79f-f7b3-4ccf-a345-cb751f577a29",
-      "colId": "bc5a7187-3a12-4298-ae7b-57957ed62b7b",
-      "containerId": "818086f6-7c41-4469-b032-f15be3012cf2",
-      "name": "findAll orders",
-      "url": "/orders",
-      "method": "GET",
-      "sortNum": 20000,
-      "created": "2023-06-12T17:58:18.343Z",
-      "modified": "2023-06-12T18:14:42.984Z",
-      "headers": [],
-      "params": [],
-      "tests": []
-    },
-    {
-      "_id": "c5831822-be79-42ae-9ff3-bdda741a4c4a",
-      "colId": "bc5a7187-3a12-4298-ae7b-57957ed62b7b",
-      "containerId": "",
-      "name": "/404",
-      "url": "https://cashback-api.herokuapp.com/foo",
-      "method": "GET",
-      "sortNum": 20000,
-      "created": "2023-06-12T17:58:18.344Z",
-      "modified": "2023-06-12T18:00:14.512Z",
-      "headers": [],
-      "params": [],
-      "tests": []
-    },
-    {
-      "_id": "654833f5-daf8-401f-8455-3da81265724e",
-      "colId": "bc5a7187-3a12-4298-ae7b-57957ed62b7b",
-      "containerId": "818086f6-7c41-4469-b032-f15be3012cf2",
-      "name": "findOne order",
-      "url": "/orders/1",
-      "method": "GET",
-      "sortNum": 30000,
-      "created": "2023-06-12T17:58:18.345Z",
-      "modified": "2023-06-12T18:15:01.411Z",
-      "headers": [],
-      "params": [],
-      "tests": []
-    },
-    {
-      "_id": "2540ff66-4e01-4f33-b67a-52e2779f4dca",
-      "colId": "bc5a7187-3a12-4298-ae7b-57957ed62b7b",
-      "containerId": "85832fff-3e5d-4560-98c2-e02d51d86d56",
-      "name": "findOne customer",
-      "url": "/customers/1",
-      "method": "GET",
-      "sortNum": 40000,
-      "created": "2023-06-12T17:58:18.346Z",
-      "modified": "2023-06-12T18:08:16.131Z",
-      "headers": [],
-      "params": [],
-      "tests": []
-    },
-    {
-      "_id": "5dea0572-b26a-4443-9a99-853b794f0136",
-      "colId": "bc5a7187-3a12-4298-ae7b-57957ed62b7b",
-      "containerId": "818086f6-7c41-4469-b032-f15be3012cf2",
-      "name": "update order",
-      "url": "/orders/1",
-      "method": "PUT",
-      "sortNum": 40000,
-      "created": "2023-06-12T17:58:18.347Z",
-      "modified": "2023-06-12T18:15:19.170Z",
-      "headers": [],
-      "params": [],
-      "tests": []
-    },
-    {
-      "_id": "21aef8a6-23dd-43c9-bc73-9dd82212abec",
-      "colId": "bc5a7187-3a12-4298-ae7b-57957ed62b7b",
-      "containerId": "85832fff-3e5d-4560-98c2-e02d51d86d56",
-      "name": "update customer",
-      "url": "/customers/1",
-      "method": "PUT",
-      "sortNum": 45000,
-      "created": "2023-06-12T17:58:18.348Z",
-      "modified": "2023-06-12T18:09:01.986Z",
-      "headers": [],
-      "params": [],
-      "body": {
-        "type": "json",
-        "raw": "{\n  \"name\": \"João Silva\"\n}",
-        "form": []
-      },
-      "tests": []
-    },
-    {
-      "_id": "ebc6466c-47c2-423d-855a-745933ddb030",
-      "colId": "bc5a7187-3a12-4298-ae7b-57957ed62b7b",
-      "containerId": "85832fff-3e5d-4560-98c2-e02d51d86d56",
-      "name": "delete customer",
-      "url": "/customers/1",
-      "method": "DELETE",
-      "sortNum": 50000,
-      "created": "2023-06-12T17:58:18.349Z",
-      "modified": "2023-06-12T18:11:09.603Z",
-      "headers": [],
-      "params": [],
-      "tests": []
-    },
-    {
-      "_id": "841d182b-bcb1-4382-8b6c-7d3065d4b716",
-      "colId": "bc5a7187-3a12-4298-ae7b-57957ed62b7b",
-      "containerId": "818086f6-7c41-4469-b032-f15be3012cf2",
-      "name": "delete order",
-      "url": "/orders/1",
-      "method": "DELETE",
-      "sortNum": 50000,
-      "created": "2023-06-12T17:58:18.350Z",
-      "modified": "2023-06-12T18:15:34.891Z",
-      "headers": [],
-      "params": [],
-      "tests": []
-    }
-  ],
-  "settings": {
-    "options": {
-      "baseUrl": "https://cashback-api.herokuapp.com"
-    },
-    "runOptions": {
-      "delay": 1,
-      "iterations": 1,
-      "dataFilePath": ""
-    }
-  }
 }
