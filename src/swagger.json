@@ -9,10 +9,6 @@
     {
       "url": "http://localhost:3000",
       "description": "Localhost server"
-    },
-    {
-      "url": "https://cashback-api.herokuapp.com/",
-      "description": "Development server"
     }
   ],
   "paths": {
