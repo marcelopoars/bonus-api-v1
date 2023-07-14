@@ -9,6 +9,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Update readme
+
+## [1.10.0] - 2023-06-15 - 1U3U50ur
+
+### Changed
+
 - Code refactor
 - Created Base Repository
 
@@ -17,7 +23,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Install and configure swagger-ui-express
-- install cors
+- Install cors
 
 ### Added
 
